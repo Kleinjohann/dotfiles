@@ -1,0 +1,226 @@
+" When started as "evim", evim.vim will already have done these settings.
+if v:progname =~? "evim"
+  finish
+endif
+
+" get the defaults
+source $VIMRUNTIME/defaults.vim
+
+" set directories for temporary files
+set backupdir=~/.vim/backup/,~/.backup/,/tmp//
+set directory=~/.vim/swp/,~/.swp/,/tmp//
+set undodir=~/.vim/undo/,~/.undo/,/tmp//
+
+let mapleader = " "
+
+" turn hybrid line numbers on
+:set number relativenumber
+:set nu rnu
+
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file (restore to previous version)
+  if has('persistent_undo')
+    set undofile	" keep an undo file (undo changes after closing)
+  endif
+endif
+
+if &t_Co > 2 || has("gui_running")
+  " Switch on highlighting the last used search pattern.
+  set hlsearch
+endif
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  augroup END
+
+else
+
+  set autoindent " always set autoindenting on
+
+endif " has("autocmd")
+
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+set encoding=utf-8
+
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
+" Cursor Shapes
+let &t_SI = "\<esc>[5 q"
+let &t_SR = "\<esc>[5 q"
+let &t_EI = "\<esc>[2 q"
+
+" Add optional packages.
+"
+" The matchit plugin makes the % command work better, but it is not backwards
+" compatible.
+" The ! means the package won't be loaded right away but when plugins are
+" loaded during initialization.
+if has('syntax') && has('eval')
+  packadd! matchit
+endif
+
+" Automatically install vim-plug if it's not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/bundle')
+
+" Visuals
+Plug 'chriskempson/base16-vim'
+Plug 'machakann/vim-highlightedyank'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Git
+" Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" Tmux
+Plug 'roxma/vim-tmux-clipboard'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" Navigation
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Searching
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim', { 'do': 'curl https://beyondgrep.com/ack-v3.1.2 > ~/bin/ack && chmod 0755 ~/bin/ack' }
+
+" Folding
+Plug 'Konfekt/FastFold'
+
+" Meta
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+
+" Linting
+Plug 'dense-analysis/ale'
+
+" Autocompletion
+Plug 'Valloric/YouCompleteMe'
+
+" Operators
+Plug 'christoomey/vim-sort-motion'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+
+" Text Objects
+Plug 'Julian/vim-textobj-variable-segment'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-user'
+
+" Python
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+
+" Markdown
+Plug 'plasticboy/vim-markdown'
+
+call plug#end()
+
+" YouCompleteMe Settings
+set rtp+=~/.vim/bundle/YouCompleteMe
+let g:ycm_server_python_interpreter="/usr/bin/python3"
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" add fzf to path
+set rtp+=~/.fzf
+
+" This is only necessary if you use "set termguicolors".
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" set termguicolors
+
+" set colorscheme
+" note that italics are disabled by default
+" let g:gruvbox_italic=1
+" colorscheme gruvbox
+
+" fixes glitch? in colors when using vim with tmux
+set background=dark
+set t_Co=256
+
+" automatically match the theme to the one set by base16-shell
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+" airline theme that uses the colors set by base16-shell
+let g:airline_theme='base16color'
+
+" enable airline tabline
+let g:airline#extensions#tabline#enabled = 1
+
+" map NerdTree Toggle to Ctrl-n
+map <C-n> :NERDTreeToggle<CR>
+
+" cycle through tabs with Tab
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+
+" <Ctrl-l> redraws the screen and removes any search highlighting
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" faster split navigation without C-w prefix
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Linting Settings
+let g:ale_linters = {'python': ['flake8']}
+" highlight ALEError ctermbg=DarkMagenta
+
+" set ack.vim to use ag by default if it is available
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" show Tabs and Whitespaces
+:set list
+:set listchars=tab:>·,nbsp:␣,trail:•,precedes:«,extends:»
+
+" Snakemake Syntax Highlighting
+au BufNewFile,BufRead Snakefile set syntax=snakemake
+au BufNewFile,BufRead *.rules set syntax=snakemake
+au BufNewFile,BufRead *.snakefile set syntax=snakemake
+au BufNewFile,BufRead *.snake set syntax=snakemake
+
+" Latex Math Syntax in Markdown
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+" automatically set paste / nopaste when pasting
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
