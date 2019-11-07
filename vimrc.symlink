@@ -1,10 +1,7 @@
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 " get the defaults
 source $VIMRUNTIME/defaults.vim
+
+set nocompatible
 
 " set directories for temporary files
 set backupdir=~/.vim/backup/,~/.backup/,/tmp//
@@ -17,37 +14,17 @@ let mapleader = " "
 :set number relativenumber
 :set nu rnu
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  if has('persistent_undo')
-    set undofile	" keep an undo file (undo changes after closing)
-  endif
-endif
+" keep backup and undo files
+set backup
+set undofile
 
 if &t_Co > 2 || has("gui_running")
   " Switch on highlighting the last used search pattern.
   set hlsearch
 endif
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  augroup END
-
-else
-
-  set autoindent " always set autoindenting on
-
-endif " has("autocmd")
+" For all text files set 'textwidth' to 78 characters.
+autocmd FileType text setlocal textwidth=78
 
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
@@ -152,11 +129,6 @@ set rtp+=~/.fzf
 
 " set termguicolors
 
-" set colorscheme
-" note that italics are disabled by default
-" let g:gruvbox_italic=1
-" colorscheme gruvbox
-
 " fixes glitch? in colors when using vim with tmux
 set background=dark
 set t_Co=256
@@ -179,9 +151,6 @@ map <C-n> :NERDTreeToggle<CR>
 " cycle through tabs with Tab
 :nnoremap <Tab> :bnext<CR>
 :nnoremap <S-Tab> :bprevious<CR>
-
-" <Ctrl-l> redraws the screen and removes any search highlighting
-nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " faster split navigation without C-w prefix
 nnoremap <C-J> <C-W><C-J>
