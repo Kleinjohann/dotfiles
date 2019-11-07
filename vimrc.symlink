@@ -1,6 +1,3 @@
-" get the defaults
-source $VIMRUNTIME/defaults.vim
-
 set nocompatible
 
 " set directories for temporary files
@@ -10,44 +7,83 @@ set undodir=~/.vim/undo/,~/.undo/,/tmp//
 
 let mapleader = " "
 
+" Key Combos
+set showcmd
+set timeout
+set ttimeout
+set timeoutlen=1000
+set ttimeoutlen=0
+
+" update stuff more quickly (default 4000)
+set updatetime=1000
+
+" make splits mouse selectable
+if has('mouse')
+  set mouse=a
+endif
+
 " turn hybrid line numbers on
-:set number relativenumber
-:set nu rnu
+set number relativenumber
+
+" hide buffers instead of closing them
+set hidden
+
+" Command Line Completion
+set wildmenu
+
+" buffer screen updates
+set lazyredraw
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
 " keep backup and undo files
 set backup
 set undofile
 
-if &t_Co > 2 || has("gui_running")
-  " Switch on highlighting the last used search pattern.
-  set hlsearch
-endif
-
-" For all text files set 'textwidth' to 78 characters.
-autocmd FileType text setlocal textwidth=78
-
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-set encoding=utf-8
-
 " Open new split panes to right and bottom
 set splitbelow
 set splitright
+
+" set tabs to four spaces and indent accordingly
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+
+" Search Settings
+set incsearch
+set ignorecase smartcase
+set hlsearch
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
+
+" Always go to first line for commit messages
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 " Cursor Shapes
 let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[5 q"
 let &t_EI = "\<esc>[2 q"
 
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-" The ! means the package won't be loaded right away but when plugins are
-" loaded during initialization.
-if has('syntax') && has('eval')
-  packadd! matchit
-endif
+" Highlight Cursor Line
+set cursorline
+set nocursorcolumn
+
+" Scroll Offset
+set scrolloff=5
+set sidescrolloff=5
+set winheight=5
+set winminheight=5
 
 " Automatically install vim-plug if it's not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -65,7 +101,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Git
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Tmux
@@ -123,6 +159,9 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " add fzf to path
 set rtp+=~/.fzf
 
+" fzf mappings to open splits
+let g:fzf_action = {'ctrl-h': 'split', 'ctrl-v': 'vsplit'}
+
 " This is only necessary if you use "set termguicolors".
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -139,20 +178,33 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-" airline theme that uses the colors set by base16-shell
+" Airline
 let g:airline_theme='base16color'
-
-" enable airline tabline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_inactive_collapse = 0
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.notexists = '∄'
 
 " map NerdTree Toggle to Ctrl-n
 map <C-n> :NERDTreeToggle<CR>
 
-" cycle through tabs with Tab
-:nnoremap <Tab> :bnext<CR>
-:nnoremap <S-Tab> :bprevious<CR>
+" Faster Scrolling
+nnoremap <C-E> 3<C-E>
+nnoremap <C-Y> 3<C-Y>
 
-" faster split navigation without C-w prefix
+" Buffer Navigation
+noremap <silent> <leader>`  :b#<CR>
+noremap <silent> <leader>]  :bn<CR>
+noremap <silent> <leader>[  :bp<CR>
+nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>
+
+" Split Navigation
+noremap <leader>- :split<CR>
+noremap <leader>= :vsplit<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -160,6 +212,8 @@ nnoremap <C-H> <C-W><C-H>
 
 " Linting Settings
 let g:ale_linters = {'python': ['flake8']}
+noremap <leader>e   :ALENext<CR>
+noremap <leader>E   :ALEPrevious<CR>
 " highlight ALEError ctermbg=DarkMagenta
 
 " set ack.vim to use ag by default if it is available
