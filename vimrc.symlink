@@ -127,7 +127,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'dense-analysis/ale'
 
 " Autocompletion
-Plug 'Valloric/YouCompleteMe'
+if has("python3")
+    Plug 'Valloric/YouCompleteMe'
+endif
 
 " Operators
 Plug 'christoomey/vim-sort-motion'
