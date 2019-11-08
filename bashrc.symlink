@@ -127,7 +127,7 @@ source ~/.bash-git-prompt/gitprompt.sh
 # if installed with root access
 [[ -s /usr/share/autojump/autojump.sh ]] && source /usr/share/autojump/autojump.sh
 
-if command -v snakemake; then
+if command -v snakemake > /dev/null; then
     `snakemake --bash-completion`
 fi
 
