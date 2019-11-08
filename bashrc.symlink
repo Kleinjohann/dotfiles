@@ -129,6 +129,9 @@ source ~/.bash-git-prompt/gitprompt.sh
 
 `snakemake --bash-completion`
 
+# use local tmux version if it exists
+[[ -f ~/local/bin/tmux ]] && alias tmux="~/local/bin/tmux"
+
 # start a new tmux session and set its name to the current hostname
 # (check if getting the version returns an error first to make sure tmux can be started)
 if tmux -V -> /dev/null; then
