@@ -127,7 +127,9 @@ source ~/.bash-git-prompt/gitprompt.sh
 # if installed with root access
 [[ -s /usr/share/autojump/autojump.sh ]] && source /usr/share/autojump/autojump.sh
 
-`snakemake --bash-completion`
+if command -v snakemake; then
+    `snakemake --bash-completion`
+fi
 
 # use local tmux version if it exists
 [[ -f ~/local/bin/tmux ]] && alias tmux="~/local/bin/tmux"
