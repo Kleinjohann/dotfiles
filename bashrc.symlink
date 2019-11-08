@@ -122,12 +122,18 @@ GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 source ~/.bash-git-prompt/gitprompt.sh
 
 # Autojump
-. /usr/share/autojump/autojump.sh
+# if installed for the current user only
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+# if installed with root access
+[[ -s /usr/share/autojump/autojump.sh ]] && source /usr/share/autojump/autojump.sh
 
 `snakemake --bash-completion`
 
 # start a new tmux session and set its name to the current hostname
-[[ -n $TMUX ]] || tmux new-session -A -s ${HOSTNAME/./·}
+# (check if getting the version returns an error first to make sure tmux can be started)
+if tmux -V -> /dev/null; then
+    [[ -n $TMUX ]] || tmux new-session -A -s ${HOSTNAME/./·}
+fi
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
