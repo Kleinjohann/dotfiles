@@ -126,6 +126,7 @@ GIT_PROMPT_STAGED="${Magenta} ●"
 GIT_PROMPT_CHANGED="${Blue} ±"
 GIT_PROMPT_UNTRACKED="${Green} +"
 GIT_PROMPT_STASHED=" 📦${Yellow}"
+GIT_PROMPT_CLEAN="${Green} ✔"
 
 # Autojump
 # if installed for the current user only
