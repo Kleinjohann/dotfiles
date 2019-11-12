@@ -97,18 +97,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Initialise conda
-__conda_setup="$('~/software/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+# Conda Initialisation
+if [ -f "$HOME/software/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "$HOME/software/miniconda3/etc/profile.d/conda.sh"
 else
-    if [ -f "~/software/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "~/software/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="~/software/miniconda3/bin:$PATH"
-    fi
+    export PATH="$HOME/software/miniconda3/bin:$PATH"
 fi
-unset __conda_setup
 
 # conda aliases for fast environment switching
 alias act="conda deactivate; conda activate"
