@@ -158,8 +158,8 @@ setw -g window-status-activity-attr "none"
 setw -g window-status-activity-style "fg=$c_red,bg=$c_black,none"
 set -g status-left "${prefix_on}#[fg=$c_black,bg=$status_bg,bold]Session:#[nobold] #S${prefix_on}#[fg=$c_grey_d,bg=$c_black]"
 set -g status-right "#[fg=$status_bg,bg=$c_grey_d]${uptime} ${copy_mode} #[fg=$c_black,bg=$status_bg]${prefix_on}#h${prefix_on}"
-setw -g window-status-format "#[fg=$status_bg,bg=$c_black] #{?window_last_flag,:, }#I#{?window_last_flag,:, }#[fg=$status_bg,bg=$c_black] #T #{?#{!=:#{window_panes},1},(#{window_panes}) ,}"
-setw -g window-status-current-format "#[fg=$status_bg,bg=$c_grey_d,bold] [#I] #T #{?#{!=:#{window_panes},1},(#{window_panes}) ,}#[fg=$c_grey_l,bg=$c_black]"
+setw -g window-status-format "#[fg=$status_bg,bg=$c_black] #{?window_last_flag,:, }#I#{?window_last_flag,:, }#[fg=$status_bg,bg=$c_black] #W #{?#{!=:#{window_panes},1},(#{window_panes}) ,}"
+setw -g window-status-current-format "#[fg=$status_bg,bg=$c_grey_d,bold] [#I] #W #{?#{!=:#{window_panes},1},(#{window_panes}) ,}#[fg=$c_grey_l,bg=$c_black]"
 setw -g window-status-separator ""
 set -g status-interval 1
 set -g focus-events on
