@@ -131,6 +131,7 @@ create_link() {
         handle_existing_file "$file_loc" "$symlink_loc"
     else
         create_new_symlink "$file_loc" "$symlink_loc"
+        echo "Created a symlink $symlink_loc -> $file_loc"
     fi
 }
 
