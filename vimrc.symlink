@@ -162,8 +162,9 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " add fzf to path
 set rtp+=~/.fzf
 
-" fzf mappings to open splits
+" fzf mappings
 let g:fzf_action = {'ctrl-h': 'split', 'ctrl-v': 'vsplit'}
+nnoremap <C-F> :Files<CR>
 
 " This is only necessary if you use "set termguicolors".
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
