@@ -215,7 +215,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " reload vimrc
-nnoremap <leader>r :source ~/.vimrc<CR>
+map <leader>r :source ~/.vimrc<CR>
 
 " save current file
 nmap <leader>w :w<CR>
