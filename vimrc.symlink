@@ -214,6 +214,12 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" fugitive mappings
+nmap <leader>gw :Gwrite<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gs :Gstatus<CR>
+
 " Linting Settings
 let g:ale_linters = {'python': ['flake8']}
 noremap <leader>e   :ALENext<CR>
