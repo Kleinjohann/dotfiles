@@ -217,6 +217,9 @@ nnoremap <C-H> <C-W><C-H>
 " reload vimrc
 nnoremap <leader>r :source ~/.vimrc<CR>
 
+" save current file
+nmap <leader>w :w<CR>
+
 " fugitive mappings
 nmap <leader>gw :Gwrite<CR>
 nmap <leader>gc :Gcommit<CR>
