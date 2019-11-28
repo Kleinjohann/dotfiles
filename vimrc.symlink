@@ -217,6 +217,16 @@ nnoremap <C-H> <C-W><C-H>
 " reload vimrc
 map <leader>r :source ~/.vimrc<CR>
 
+" split lines
+function! BreakHere()
+    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+    call histdel("/", -1)
+endfunction
+map <leader><leader> :<C-u>call BreakHere()<CR>
+
+" clear search highlighting and redraw the screen
+nnoremap <C-L> :nohlsearch<CR><C-L>
+
 " save current file
 nmap <leader>w :w<CR>
 
