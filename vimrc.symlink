@@ -165,6 +165,7 @@ set rtp+=~/.fzf
 " fzf mappings
 let g:fzf_action = {'ctrl-h': 'split', 'ctrl-v': 'vsplit'}
 nnoremap <C-F> :Files<CR>
+nnoremap <C-B> :Buffers<CR>
 
 " This is only necessary if you use "set termguicolors".
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
