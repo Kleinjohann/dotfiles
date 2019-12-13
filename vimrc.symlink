@@ -110,7 +110,7 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Navigation
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-vinegar'
 
 " Searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -192,8 +192,8 @@ endif
 let g:airline_symbols.branch = ''
 let g:airline_symbols.notexists = ' ∄'
 
-" map NerdTree Toggle to Ctrl-n
-map <C-n> :NERDTreeToggle<CR>
+" netrw
+let g:netrw_fastbrowse = 0
 
 " Faster Scrolling
 nnoremap <C-E> 3<C-E>
