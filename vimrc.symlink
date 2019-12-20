@@ -52,6 +52,13 @@ set shiftwidth=4
 set expandtab
 set autoindent
 
+" Enable file type detection
+filetype on
+
+" deal with languages that are fussy about tabs vs spaces
+autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " Search Settings
 set incsearch
 set ignorecase smartcase
