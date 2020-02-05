@@ -141,6 +141,7 @@ endif
 
 " Operators
 Plug 'christoomey/vim-sort-motion'
+Plug 'christoomey/vim-titlecase'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -227,11 +228,7 @@ nnoremap <leader>h <C-W><C-H>
 map <leader>r :source ~/.vimrc<CR>
 
 " split lines
-function! BreakHere()
-    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-    call histdel("/", -1)
-endfunction
-map <leader><leader> :<C-u>call BreakHere()<CR>
+nnoremap <leader><leader> :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 
 " clear search highlighting and redraw the screen
 nnoremap <C-L> :nohlsearch<CR><C-L>
