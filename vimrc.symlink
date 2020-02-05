@@ -176,16 +176,6 @@ let g:fzf_action = {'ctrl-h': 'split', 'ctrl-v': 'vsplit'}
 nnoremap <C-F> :Files<CR>
 nnoremap <C-B> :Buffers<CR>
 
-" This is only necessary if you use "set termguicolors".
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-" set termguicolors
-
-" fixes glitch? in colors when using vim with tmux
-set background=dark
-set t_Co=256
-
 " automatically match the theme to the one set by base16-shell
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -258,7 +248,6 @@ xmap <buffer> ac <Plug>GitGutterTextObjectOuterVisual
 let g:ale_linters = {'python': ['flake8']}
 noremap <leader>e   :ALENext<CR>
 noremap <leader>E   :ALEPrevious<CR>
-" highlight ALEError ctermbg=DarkMagenta
 
 " set ack.vim to use ag by default if it is available
 if executable('ag')
