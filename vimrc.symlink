@@ -113,8 +113,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Tmux
+Plug 'jgdavey/tslime.vim'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" Tests
+Plug 'janko/vim-test'
 
 " Navigation
 Plug 'tpope/vim-vinegar'
@@ -194,6 +198,19 @@ let g:airline_symbols.notexists = ' ∄'
 
 " netrw
 let g:netrw_fastbrowse = 0
+
+" tslime
+let g:tslime_always_current_session = 1
+
+" vim-test
+let g:test#strategy = "tslime"
+let g:test#preserve_screen = 1
+let g:test#python#runner = 'nose'
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
 
 " Faster Scrolling
 nnoremap <C-E> 3<C-E>
