@@ -264,15 +264,15 @@ nmap <leader>gs :Gstatus<CR>
 
 " git gutter mappings
 let g:gitgutter_map_keys = 0
-nmap <buffer> <leader>cp <Plug>GitGutterPreviewHunk
-nmap <buffer> <leader>cu <Plug>GitGutterUndoHunk
-nmap <buffer> <leader>cs <Plug>GitGutterStageHunk
-nmap <buffer> [c <Plug>GitGutterPrevHunk
-nmap <buffer> ]c <Plug>GitGutterNextHunk
-omap <buffer> ic <Plug>GitGutterTextObjectInnerPending
-omap <buffer> ac <Plug>GitGutterTextObjectOuterPending
-xmap <buffer> ic <Plug>GitGutterTextObjectInnerVisual
-xmap <buffer> ac <Plug>GitGutterTextObjectOuterVisual
+nmap <buffer> <leader>cp <Plug>(GitGutterPreviewHunk)
+nmap <buffer> <leader>cu <Plug>(GitGutterUndoHunk)
+nmap <buffer> <leader>cs <Plug>(GitGutterStageHunk)
+nmap <buffer> [c <Plug>(GitGutterPrevHunk)
+nmap <buffer> ]c <Plug>(GitGutterNextHunk)
+omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
+omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
+xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
+xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
 
 " Linting Settings
 let g:ale_linters = {'python': ['flake8']}
