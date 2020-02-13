@@ -224,10 +224,12 @@ noremap <silent> <leader>]  :bn<CR>
 noremap <silent> <leader>[  :bp<CR>
 
 " Tab Navigation
+nnoremap <leader>t :tabedit %<CR>
+nnoremap <leader>T :tabclose<CR>
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
 
-" Switch to last-active tab
+" switch to last active tab
 if !exists('g:Lasttab')
     let g:Lasttab = 1
     let g:Lasttab_backup = 1
