@@ -217,11 +217,21 @@ nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
 
 " Buffer Navigation
-noremap <silent> <leader>`  :b#<CR>
 noremap <silent> <leader>]  :bn<CR>
 noremap <silent> <leader>[  :bp<CR>
-nnoremap <Tab> :bn<CR>
-nnoremap <S-Tab> :bp<CR>
+
+" Tab Navigation
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
+
+" Switch to last-active tab
+if !exists('g:Lasttab')
+    let g:Lasttab = 1
+    let g:Lasttab_backup = 1
+endif
+autocmd! TabLeave * let g:Lasttab_backup = g:Lasttab | let g:Lasttab = tabpagenr()
+autocmd! TabClosed * let g:Lasttab = g:Lasttab_backup
+nmap <silent> <Leader>` :exe "tabn " . g:Lasttab<CR>
 
 " Split Navigation
 noremap <leader>- :split<CR>
