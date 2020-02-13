@@ -45,6 +45,9 @@ set undofile
 set splitbelow
 set splitright
 
+" Always use vertical diffsplits
+set diffopt+=vertical
+
 " set tabs to four spaces and indent accordingly
 set tabstop=4
 set softtabstop=4
