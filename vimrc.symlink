@@ -152,6 +152,12 @@ Plug 'Konfekt/FastFold'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 
+" Undo
+Plug 'sjl/gundo.vim'
+
+" Advanced Substitution and Abbreviation
+Plug 'tpope/vim-abolish'
+
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -167,6 +173,7 @@ endif
 " Operators
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-titlecase'
+Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -197,6 +204,9 @@ map <leader>d  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:UltiSnipsExpandTrigger="<C-s>"
 let g:UltiSnipsJumpForwardTrigger="<C-f>"
 let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+
+" Gundo
+nnoremap <leader>u :GundoToggle<CR>
 
 " add fzf to path
 set rtp+=~/.fzf
