@@ -75,6 +75,13 @@ alias la='ls -A'
 alias l='ls -CF'
 alias lss='ls -sh'
 
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+
+alias mkdir="mkdir -p"
+alias e="$EDITOR"
+alias v="$VISUAL"
+
 alias f='fuck'
 alias F='fuck --yeah'
 alias FUCK='fuck --yeah'
