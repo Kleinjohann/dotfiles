@@ -95,6 +95,14 @@ set sidescrolloff=5
 set winheight=5
 set winminheight=5
 
+" neovim specifics
+if has('nvim')
+    " link neovim to the correct python version
+    let g:python3_host_prog = expand('$HOME/software/miniconda3/envs/neovim/bin/python')
+    " Incremental Find & Replace
+    set inccommand=split
+endif
+
 " Automatically install vim-plug if it's not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !mkdir -p ~/.vim/autoload
