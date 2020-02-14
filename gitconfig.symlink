@@ -1,0 +1,14 @@
+[user]
+    name = kleinjohann
+    email = a.kleinjohann@fz-juelich.de
+[alias]
+    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+    sl = log --oneline --decorate -20
+    sla = log --oneline --decorate --graph --all -20
+    slap = log --oneline --decorate --graph --all
+[fetch]
+    prune = true
+[rebase]
+    autosquash = true
+[include]
+    path = ~/.gitconfig.local
