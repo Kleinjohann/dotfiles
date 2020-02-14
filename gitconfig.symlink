@@ -1,3 +1,5 @@
+# vi: ft=gitconfig
+
 [user]
     name = kleinjohann
     email = a.kleinjohann@fz-juelich.de

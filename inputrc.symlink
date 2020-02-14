@@ -1,3 +1,5 @@
+# vi: ft=readline
+
 set editing-mode vi
 
 # change cursor according to vi mode
