@@ -138,6 +138,10 @@ Plug 'Konfekt/FastFold'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " Linting
 Plug 'dense-analysis/ale'
 
@@ -174,6 +178,11 @@ set rtp+=~/.vim/bundle/YouCompleteMe
 let g:ycm_server_python_interpreter="/usr/bin/python3"
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>d  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" ultisnips settings
+let g:UltiSnipsExpandTrigger="<C-s>"
+let g:UltiSnipsJumpForwardTrigger="<C-f>"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 
 " add fzf to path
 set rtp+=~/.fzf
