@@ -296,6 +296,9 @@ nmap <leader>gw :Gwrite<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gd :Gdiff<CR>
 nmap <leader>gs :Gstatus<CR>
+nmap <leader>gl :G log<CR>
+nmap <leader>gb :Gblame<CR>
+nmap <leader>gr :Gread<CR>
 
 " git gutter mappings
 let g:gitgutter_map_keys = 0
