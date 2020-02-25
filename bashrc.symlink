@@ -146,12 +146,6 @@ fi
 # use local tmux version if it exists
 [[ -f ~/local/bin/tmux ]] && alias tmux="~/local/bin/tmux"
 
-# start a new tmux session and set its name to the current hostname
-# (check if getting the version returns an error first to make sure tmux can be started)
-if tmux -V > /dev/null 2>&1; then
-    [[ -n $TMUX ]] || tmux new-session -A -s ${HOSTNAME/./·}
-fi
-
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS=$'--bind \'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | xclip -i -sel c)+abort\''
@@ -166,6 +160,28 @@ tm() {
   fi
   session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
+
+# start a new tmux session and set its name to the current hostname
+# if running in guake, set the name to 'dropdown'
+# if a session with the respective name exists, attach to it instead
+# (check if getting the version returns an error first to make sure tmux can be started)
+if tmux -V > /dev/null 2>&1; then
+    host_terminal=$(basename "/"$(ps -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/^.* //'))
+    guake_session_name=dropdown
+    terminal_session_name=${HOSTNAME/./·}
+    case $host_terminal in
+        $guake_session_name|$terminal_session_name)
+            :
+            ;;
+        guake)
+            tm $guake_session_name
+            ;;
+        *)
+            tm $terminal_session_name
+            ;;
+    esac
+fi
+
 
 # use FZF when calling autojump without any arguments
 j() {
