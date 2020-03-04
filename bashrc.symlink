@@ -132,6 +132,8 @@ GIT_PROMPT_STASHED=" ${Yellow} "
 GIT_PROMPT_CLEAN="${Green} ✔ "
 GIT_PROMPT_SUFFIX=""
 
+if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
+
 # Autojump
 # if installed for the current user only
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
@@ -164,8 +166,9 @@ tm() {
 # start a new tmux session and set its name to the current hostname
 # if running in guake, set the name to 'dropdown'
 # if a session with the respective name exists, attach to it instead
+# stay in current session if the shell was spawned by ranger
 # (check if getting the version returns an error first to make sure tmux can be started)
-if tmux -V > /dev/null 2>&1; then
+if tmux -V > /dev/null 2>&1 &&  ! [[ -n "$RANGER_LEVEL" ]]; then
     host_terminal=$(basename "/"$(ps -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/^.* //'))
     guake_session_name=dropdown
     terminal_session_name=${HOSTNAME/./·}
@@ -214,4 +217,19 @@ fif() {
 if command -v thefuck -> /dev/null; then
     eval $(thefuck --alias)
 fi
+
+# Add a `r` function that opens ranger either at the given directory or
+# at the one autojump suggests
+r() {
+  if [ "$1" != "" ]; then
+    if [ -d "$1" ]; then
+      ranger "$1"
+    else
+      ranger "$(autojump $1)"
+    fi
+  else
+    ranger
+  fi
+	return $?
+}
 

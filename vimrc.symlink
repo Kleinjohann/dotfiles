@@ -194,6 +194,9 @@ Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
+" ranger
+let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
+
 " YouCompleteMe Settings
 set rtp+=~/.vim/bundle/YouCompleteMe
 let g:ycm_server_python_interpreter="/usr/bin/python3"
