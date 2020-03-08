@@ -8,6 +8,7 @@ set directory=~/.vim/swp/,~/.swp/,/tmp//
 set undodir=~/.vim/undo/,~/.undo/,/tmp//
 
 let mapleader = " "
+let maplocalleader = " "
 
 " Key Combos
 set showcmd
@@ -189,6 +190,9 @@ Plug 'kana/vim-textobj-user'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 
+" LaTeX
+Plug 'lervag/vimtex'
+
 " Markdown
 Plug 'SidOfc/mkdx'
 Plug 'alok/notational-fzf-vim'
@@ -199,6 +203,13 @@ call plug#end()
 nnoremap <silent> <C-N> :NV<CR>
 let g:nv_search_paths = ['~/Documents/Notes']
 let g:mkdx#settings = { 'map': { 'prefix': 'm' } }
+
+" tex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " ranger
 let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
