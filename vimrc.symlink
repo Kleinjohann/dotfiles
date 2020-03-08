@@ -190,9 +190,15 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 
 " Markdown
-Plug 'plasticboy/vim-markdown'
+Plug 'SidOfc/mkdx'
+Plug 'alok/notational-fzf-vim'
 
 call plug#end()
+
+" notes
+nnoremap <silent> <C-N> :NV<CR>
+let g:nv_search_paths = ['~/Documents/Notes']
+let g:mkdx#settings = { 'map': { 'prefix': 'm' } }
 
 " ranger
 let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
