@@ -138,7 +138,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'janko/vim-test'
 
 " Navigation
-Plug 'tpope/vim-vinegar'
+Plug 'francoiscabrol/ranger.vim'
 
 " Searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
