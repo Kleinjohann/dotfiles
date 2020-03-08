@@ -257,6 +257,7 @@ let g:netrw_fastbrowse = 0
 
 " tslime
 let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
 
 " vim-test
 let g:test#strategy = "tslime"
