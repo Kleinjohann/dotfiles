@@ -218,7 +218,7 @@ if command -v thefuck -> /dev/null; then
     eval $(thefuck --alias)
 fi
 
-# Add a `r` function that opens ranger either at the given directory or
+# Add an `r` function that opens ranger either at the given directory or
 # at the one autojump suggests
 r() {
   if [ "$1" != "" ]; then
@@ -230,6 +230,6 @@ r() {
   else
     ranger
   fi
-	return $?
+  return $?
 }
 
