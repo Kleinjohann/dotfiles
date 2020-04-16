@@ -152,6 +152,7 @@ Plug 'Konfekt/FastFold'
 " Meta
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+Plug 'rbgrouleff/bclose.vim'
 
 " Undo
 Plug 'sjl/gundo.vim'
