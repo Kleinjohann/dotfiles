@@ -161,8 +161,10 @@ Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-abolish'
 
 " Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+if has("python3")
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+endif
 
 " Linting
 Plug 'dense-analysis/ale'
@@ -196,7 +198,9 @@ Plug 'lervag/vimtex'
 
 " Markdown
 Plug 'SidOfc/mkdx'
-Plug 'alok/notational-fzf-vim'
+if executable('ag')
+    Plug 'alok/notational-fzf-vim'
+endif
 
 call plug#end()
 
