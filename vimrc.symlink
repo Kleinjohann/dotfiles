@@ -340,8 +340,10 @@ xmap ac <Plug>(GitGutterTextObjectOuterVisual)
 
 " Linting Settings
 let g:ale_linters = {'python': ['flake8']}
+let g:ale_fixers = {'*': ['trim_whitespace'], 'python': ['autopep8']}
 noremap <leader>e   :ALENext<CR>
 noremap <leader>E   :ALEPrevious<CR>
+noremap <leader>F   :ALEFix<CR>
 
 " set ack.vim to use ag by default if it is available
 if executable('ag')
