@@ -74,6 +74,18 @@ set incsearch
 set ignorecase smartcase
 set hlsearch
 
+" do not automatically insert EOL
+set nofixendofline
+
+" never autoinsert a completion option
+set completeopt=preview,menuone,noselect,noinsert
+
+" move beyond end of line in block selection mode
+set virtualedit=block
+
+" make comments italic
+highlight Comment cterm=italic
+
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
