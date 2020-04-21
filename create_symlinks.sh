@@ -136,7 +136,7 @@ create_link() {
 }
 
 find -name '*.symlink' | while read line; do
-    filename="${line##*/}"
+    filename="${line#*/}"
     create_link "$filename"
 done
 
