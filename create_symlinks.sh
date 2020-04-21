@@ -16,7 +16,10 @@ file_exists() { test -e "$1"; }
 
 is_symlink() { test -L "$1"; }
 
-create_new_symlink() { ln -s "$1" "$2"; }
+create_new_symlink() {
+    ln -s "$1" "$2"
+    echo "Created a symlink $symlink_loc -> $file_loc"
+}
 
 invalid_file_error() {
     file_loc="$1"
@@ -44,8 +47,10 @@ mv_and_rename_if_target_exists() {
             let n+=1
         done
         mv "$file" "$target_dir/${stripext}_$n.$extension"
+
     else
         mv "$file" "$target_dir/$basename"
+
     fi
 
 }
@@ -61,16 +66,12 @@ handle_existing_regular_file() {
         rm -rf "$symlink_loc"
         create_new_symlink "$file_loc" "$symlink_loc"
 
-        echo "Created a symlink $symlink_loc -> $file_loc"
-
     elif [[ $REPLY =~ ^[Mm]$ ]]; then
         printf "\nMoving $symlink_loc to $BACKUPPATH..."
 
         mkdir -p "$BACKUPPATH"
         mv_and_rename_if_target_exists "$symlink_loc" "$BACKUPPATH"
         create_new_symlink "$file_loc" "$symlink_loc"
-
-        echo "Created a symlink $symlink_loc -> $file_loc"
 
     else
         printf "\nKeeping $symlink_loc...\n"
@@ -84,6 +85,7 @@ handle_existing_symlink() {
     if [[ "$current_dest" == "$file_loc" ]]
     then
         echo "$symlink_loc -> $file_loc ${GREEN}exists${RESET}."
+
     else
         echo "It seems like $symlink_loc already is a symlink to $current_dest."
         read -p "Do you want to replace it? [Y/N] " -n 1 -r </dev/tty
@@ -92,11 +94,8 @@ handle_existing_symlink() {
         then
             echo
             echo "Removing current symlink..."
-
             unlink "$symlink_loc"
             create_new_symlink "$file_loc" "$symlink_loc"
-
-            echo "Created a symlink $symlink_loc -> $file_loc"
 
         fi
     fi
@@ -112,8 +111,10 @@ handle_existing_file() {
     if is_symlink "$symlink_loc"
     then
         handle_existing_symlink "$file_loc" "$symlink_loc"
+
     else
         handle_existing_regular_file "$file_loc" "$symlink_loc"
+
     fi
 
 }
@@ -131,7 +132,6 @@ create_link() {
         handle_existing_file "$file_loc" "$symlink_loc"
     else
         create_new_symlink "$file_loc" "$symlink_loc"
-        echo "Created a symlink $symlink_loc -> $file_loc"
     fi
 }
 
