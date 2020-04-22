@@ -2,6 +2,7 @@
 
 set nocompatible
 
+" automatically load local configs
 set exrc
 set secure
 
