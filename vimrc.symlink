@@ -2,6 +2,9 @@
 
 set nocompatible
 
+set exrc
+set secure
+
 " set directories for temporary files
 set backupdir=~/.vim/backup/,~/.backup/,/tmp//
 set directory=~/.vim/swp/,~/.swp/,/tmp//
