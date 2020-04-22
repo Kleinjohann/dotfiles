@@ -1,0 +1,36 @@
+*background:                      #262626
+*foreground:                      #DAB997
+*cursorColor:                     #EBDBB2
+
+*color0:                          #262626
+*color8:                          #8A8A8A
+*color1:                          #D75F5F
+*color9:                          #D75F5F
+*color2:                          #AFAF00
+*color10:                         #AFAF00
+*color3:                          #FFAF00
+*color11:                         #FFAF00
+*color4:                          #83ADAD
+*color12:                         #83ADAD
+*color5:                          #D485AD
+*color13:                         #D485AD
+*color6:                          #85AD85
+*color14:                         #85AD85
+*color7:                          #DAB997
+*color15:                         #EBDBB2
+
+rofi.color-enabled: true
+rofi.color-window: #262626, #ffaf00, #ffaf00
+rofi.color-normal: #262626, #dab997, #262626, #262626, #ffaf00
+rofi.color-active: #262626, #dab997, #262626, #262626, #ffaf00
+rofi.color-urgent: #262626, #dab997, #262626, #262626, #ffaf00
+
+rofi.separator-style: solid
+rofi.sidebar-mode: false
+rofi.font: FiraCode Nerd Font Retina 10
+rofi.bw: 1
+rofi.padding: 5
+rofi.hide-scrollbar: true
+
+XTerm*font: xft:Fira\ Code\ Nerd\ Font:style=Retina:size=11
+XTerm*letterSpace: -1
