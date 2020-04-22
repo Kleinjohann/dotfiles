@@ -17,7 +17,7 @@ file_exists() { test -e "$1"; }
 is_symlink() { test -L "$1"; }
 
 create_new_symlink() {
-    parent_folder="$(dirname $1)"
+    parent_folder="$(dirname $2)"
     mkdir -p "$parent_folder"
     ln -s "$1" "$2"
     echo "Created a symlink $symlink_loc -> $file_loc"
