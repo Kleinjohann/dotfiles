@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 
+PROGNAME=$0
+
+usage() {
+  cat << EOF >&2
+Usage: $PROGNAME [-x]
+       -x: Include X related files
+EOF
+  exit 1
+}
+
+INCLUDE_X=
+
+while getopts x opt; do
+  case $opt in
+    (x) INCLUDE_X=1;;
+    (*) usage
+  esac
+done
+
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 BACKUPPATH="$HOME/dotfile_backup"
@@ -139,6 +158,20 @@ create_link() {
 
 find -name '*.symlink' | while read line; do
     filename="${line#*/}"
-    create_link "$filename"
+    if [[ "$filename" != .git* ]]
+    then
+        create_link "$filename"
+    fi
 done
+
+if [ ! -z "$INCLUDE_X" ]
+then
+    find -name '*.xsymlink' | while read line; do
+        filename="${line#*/}"
+        if [[ "$filename" != .git* ]]
+        then
+            create_link "$filename"
+        fi
+        done
+fi
 
