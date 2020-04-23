@@ -26,6 +26,7 @@ focus_follows_mouse no
 #  Workspace Assignments  #
 ###########################
 assign [class="^Firefox$"] → 1
+assign [class="^Zotero$"] → 2
 assign [class="^Lyx$"] → 3
 assign [class="^Gnome-terminal$"] → 4
 assign [class="^Thunderbird$"] → 5
