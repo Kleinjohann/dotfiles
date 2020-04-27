@@ -2,10 +2,12 @@
 
 ## Non-Obvious Requirements
 
+- [ag](https://github.com/ggreer/the_silver_searcher) (also available via apt)
 - [autojump](https://github.com/wting/autojump) (also available via apt)
 - [i3lock-fancy](https://github.com/meskarune/i3lock-fancy/tree/dualmonitors) (dualmonitors branch for multi-monitor support)
 - [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
 - [Flameshot](https://github.com/lupoDharkael/flameshot) (also available via apt)
+- [rg](https://github.com/BurntSushi/ripgrep) (also available via apt)
 
 ## Installation Tips
 
