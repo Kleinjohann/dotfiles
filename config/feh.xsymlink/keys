@@ -7,28 +7,27 @@
 # Each <key> is an X11 keysym (as output by xev) with optional modifier.
 # For instance, C-x would be Ctrl+X, or 4-space Mod4+Space
 
-# Examples for vim-like menu bindings on a qwerty keyboard:
+# vim-like menu bindings
 menu_parent h Left
 menu_child  l Right
 menu_down   j Down
 menu_up     k Up
 menu_select space Return
 
-# Same for image navigation ...
+# image navigation
 next_img j Right space
 prev_img k Left BackSpace
 
-# and image movement
-scroll_up    J C-Up
-scroll_down  K C-Down
-scroll_left  H C-Left
-scroll_right L C-Right
+# image movement
+scroll_up    J C-e
+scroll_down  K C-y
+scroll_left  H
+scroll_right L
 
-# File deletion
-remove     d   Delete
-delete   C-d C-Delete
+# file deletion
+remove   Delete
+delete   C-Delete
 
-# remove now conflicts with toggle_filenames, so change that
 toggle_filenames f
 
 # zooming
@@ -37,9 +36,7 @@ zoom_out C-Down a
 zoom_default d
 zoom_fit s
 
-# I only hit these accidentaly
+# unmap unused actions
 save_image
 save_filelist
 
-# This leaves some conflicts with existing default bindings, but you should
-# get the idea.  And I'm not gonna fix the conflicts, I don't use qwerty ;-)
