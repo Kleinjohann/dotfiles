@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Argument Handling
+
 PROGNAME=$0
 
 usage() {
@@ -19,8 +21,9 @@ while getopts x opt; do
   esac
 done
 
-SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+# Path Defiitions
 
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 BACKUPPATH="$HOME/dotfile_backup"
 
 # Font Colour Definitions
@@ -36,9 +39,15 @@ file_exists() { test -e "$1"; }
 is_symlink() { test -L "$1"; }
 
 create_new_symlink() {
-    parent_folder="$(dirname $2)"
+    file_loc="$1"
+    symlink_loc="$2"
+
+    parent_folder="$(dirname $symlink_loc)"
+
+    # Create parent folder of the symlink if it does not exist
     mkdir -p "$parent_folder"
-    ln -s "$1" "$2"
+
+    ln -s "$file_loc" "$symlink_loc"
     echo "Created a symlink $symlink_loc -> $file_loc"
 }
 
@@ -156,6 +165,8 @@ create_link() {
     fi
 }
 
+# Handle *.symlink files
+
 find -name '*.symlink' | while read line; do
     filename="${line#*/}"
     if [[ "$filename" != .git* ]]
@@ -163,6 +174,8 @@ find -name '*.symlink' | while read line; do
         create_link "$filename"
     fi
 done
+
+# Optionally handle *.xsymlink files
 
 if [ ! -z "$INCLUDE_X" ]
 then
