@@ -38,16 +38,16 @@ assign [class="^Chromium$"] → 11
 #  Autostart  #
 ###############
 # map caps-lock to ctrl
-exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
+exec --no-startup-id sleep .5; setxkbmap -option 'caps:ctrl_modifier'
 # apply custom mappings
 exec --no-startup-id sleep 1; xmodmap ~/.Xmodmap
 # start compton
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec_always ~/.config/i3/scripts/gnome-keyring.sh
-exec_always sleep 1; ~/.config/i3/scripts/launch_polybar.sh
+exec_always sleep .1; ~/.config/i3/scripts/launch_polybar.sh
 exec --no-startup-id killall -q /usr/lib/gnome-settings-daemon/gsd-print-notifications
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
-exec --no-startup-id sleep 1; nitrogen --restore
+exec --no-startup-id sleep .3; nitrogen --restore
 exec --no-startup-id guake
 exec --no-startup-id firefox
 exec --no-startup-id gnome-terminal
