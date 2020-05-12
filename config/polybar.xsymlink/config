@@ -192,7 +192,7 @@ type = internal/xbacklight
 
 format = <label> <bar>
 label = " "
-label-foreground = ${colors.blue}
+label-foreground = ${colors.yellow}
 
 bar-width = 10
 bar-indicator = |
@@ -200,7 +200,7 @@ bar-indicator-foreground = ${colors.foreground-alt}
 bar-indicator-font = 0
 bar-fill = ─
 bar-fill-font = 0
-bar-fill-foreground = ${colors.blue}
+bar-fill-foreground = ${colors.yellow}
 bar-empty = ─
 bar-empty-font = 0
 bar-empty-foreground = ${colors.foreground}
