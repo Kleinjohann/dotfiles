@@ -20,18 +20,19 @@ set -s escape-time 0
 
 # --- Define colour scheme --- #
 c_white='white'
-c_black=colour234
+c_black='black'
 c_red='red'
-c_purple='magenta'
-c_grey_l='brightblack'
-c_grey_d='black'
+c_dark_grey=colour018
+c_light_grey=colour019
+c_alt_fg=colour020
 c_normal='green'
-c_visual='blue'
+c_visual='magenta'
+c_synchronised='yellow'
 # ---------------------------- #
 
 # Panes
 set -g pane-active-border-style "fg=$c_normal"
-set -g message-style "fg=$c_grey_l,bg=$c_grey_d"
+set -g message-style "fg=$c_white,bg=$c_dark_grey"
 set -g pane-border-style "fg=white"
 set -g display-panes-colour "black"
 set -g display-panes-active-colour "white"
@@ -45,7 +46,7 @@ set-hook -g window-layout-changed 'set-window -F pane-border-status \
     "#{?#{||:#{==:#{window_panes},1},#{window_zoomed_flag}},off,top}"'
 
 # Messages
-set -g message-command-style "fg=$c_grey_l,bg=$c_grey_d"
+set -g message-command-style "fg=$c_white,bg=$c_dark_grey"
 set -g display-time 5000
 
 # focus events
@@ -142,7 +143,7 @@ bind-key -r < swap-window -t :-1
 # Status line
 
 ## Variables
-status_bg="#{?pane_in_mode,$c_visual,#{?pane_synchronized,${c_purple},${c_normal}}}"
+status_bg="#{?pane_in_mode,$c_visual,#{?pane_synchronized,${c_synchronised},${c_normal}}}"
 prefix_on="#[fg=$c_black,bg=$status_bg,bold] #{?client_prefix,=, } "
 uptime=" #(uptime | rev | cut -d":" -f1 | rev | sed s/,//g )"
 
@@ -151,15 +152,15 @@ set -g status-justify "left"
 set -g status "on"
 set -g status-left-style "none"
 set -g status-right-style "none"
-set -g status-style "fg=$c_grey_d,bg=$c_black,none"
+set -g status-style "fg=$c_dark_grey,bg=$c_dark_grey,none"
 set -g status-right-length "100"
 set -g status-left-length "100"
 setw -g window-status-activity-attr "none"
 setw -g window-status-activity-style "fg=$c_red,bg=$c_black,none"
-set -g status-left "${prefix_on}#[fg=$c_black,bg=$status_bg,bold]Session:#[nobold] #S${prefix_on}#[fg=$c_grey_d,bg=$c_black]"
-set -g status-right "#[fg=$status_bg,bg=$c_grey_d]${uptime} ${copy_mode} #[fg=$c_black,bg=$status_bg]${prefix_on}#h${prefix_on}"
-setw -g window-status-format "#[fg=$status_bg,bg=$c_black] #{?window_last_flag,:, }#I#{?window_last_flag,:, }#[fg=$status_bg,bg=$c_black] #W #{?#{!=:#{window_panes},1},(#{window_panes}) ,}"
-setw -g window-status-current-format "#[fg=$status_bg,bg=$c_grey_d,bold] [#I] #W #{?#{!=:#{window_panes},1},(#{window_panes}) ,}#[fg=$c_grey_l,bg=$c_black]"
+set -g status-left "${prefix_on}#[fg=$c_black,bg=$status_bg,bold]Session:#[nobold] #S${prefix_on}#[fg=$c_black,bg=$c_black]"
+set -g status-right "#[fg=$c_alt_fg,bg=$c_light_grey]${uptime} ${copy_mode} #[fg=$c_black,bg=$status_bg]${prefix_on}#h${prefix_on}"
+setw -g window-status-format "#[fg=$status_bg,bg=$c_dark_grey] #{?window_last_flag,:, }#I#{?window_last_flag,:, }#[fg=$status_bg,bg=$c_dark_grey] #W #{?#{!=:#{window_panes},1},(#{window_panes}) ,}"
+setw -g window-status-current-format "#[fg=$status_bg,bg=$c_black,bold] [#I] #W #{?#{!=:#{window_panes},1},(#{window_panes}) ,}#[fg=$c_dark_grey,bg=$c_black]"
 setw -g window-status-separator ""
 set -g status-interval 1
 set -g focus-events on
