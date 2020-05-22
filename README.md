@@ -4,7 +4,7 @@
 
 - [ag](https://github.com/ggreer/the_silver_searcher) (also available via apt)
 - [autojump](https://github.com/wting/autojump) (also available via apt)
-- [i3lock-fancy](https://github.com/meskarune/i3lock-fancy/tree/dualmonitors) (dualmonitors branch for multi-monitor support)
+- [i3lock-color](https://github.com/Raymo111/i3lock-color)
 - [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
 - [Flameshot](https://github.com/lupoDharkael/flameshot) (also available via apt)
 - [rg](https://github.com/BurntSushi/ripgrep) (also available via apt)
@@ -24,25 +24,25 @@ Before=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.
 
 [Service]
 User=kleinjohann
-Type=forking
+Type=simple
 Environment=DISPLAY=:0
-ExecStart=/home/kleinjohann/.config/i3/scripts/lock_screen-service.sh
+ExecStart=/home/kleinjohann/.config/i3/scripts/lock_screen.sh
 
 [Install]
 WantedBy=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
 ```
 
-reenable notifications when waking up from suspend/sleep/hibernate
+ensure the screen is locked before suspend/sleep/hibernate
 ```
 [Unit]
-Description=Reenable notifications after suspend
-After=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+Description=Wait for Screen Lock
+Before=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
 
 [Service]
 User=kleinjohann
 Type=oneshot
 Environment=DISPLAY=:0
-ExecStart=/home/kleinjohann/.config/i3/scripts/notifications.sh on
+ExecStart=/bin/sleep 3
 
 [Install]
 WantedBy=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target

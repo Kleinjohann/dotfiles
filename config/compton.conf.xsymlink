@@ -9,6 +9,8 @@ glx-swap-method = -1; # See man page.
 xrender-sync-fence = true;
 unredir-if-possible = false;
 
+mark-ovredir-focused = true; # marks i3lock with WM_STATE focused => no dim, opaque
+
 paint-on-overlay = true; # Painting on X Composite overlay window. Recommended.
 vsync = "drm"; # "none", "drm", "opengl", "opengl-oml", "opengl-swc", "opengl-mswc"
                       # See man page for more details.
