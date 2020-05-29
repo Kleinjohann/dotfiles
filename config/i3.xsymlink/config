@@ -38,23 +38,23 @@ assign [class="^Chromium$"] → 11
 #  Autostart  #
 ###############
 # map caps-lock to ctrl
-exec --no-startup-id sleep .5; setxkbmap -option 'caps:ctrl_modifier'
+exec --no-startup-id sleep .3; setxkbmap -option 'caps:ctrl_modifier'
 # apply custom mappings
-exec --no-startup-id sleep 1; xmodmap ~/.Xmodmap
+exec --no-startup-id sleep .5; xmodmap ~/.Xmodmap
 # start compton
-exec --no-startup-id compton --config ~/.config/compton.conf -b
-exec_always ~/.config/i3/scripts/gnome-keyring.sh
-exec_always sleep .1; ~/.config/i3/scripts/launch_polybar.sh
-exec --no-startup-id killall -q /usr/lib/gnome-settings-daemon/gsd-print-notifications
-exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id sleep .3; compton --config ~/.config/compton.conf -b
+exec_always sleep .1; ~/.config/i3/scripts/gnome-keyring.sh
+exec_always sleep .9; ~/.config/i3/scripts/launch_polybar.sh
+exec --no-startup-id sleep .3; killall -q /usr/lib/gnome-settings-daemon/gsd-print-notifications
+exec --no-startup-id sleep .5; dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id sleep .3; nitrogen --restore
-exec --no-startup-id guake
-exec --no-startup-id firefox
-exec --no-startup-id gnome-terminal
-exec --no-startup-id thunderbird
-exec --no-startup-id sleep 1; nm-applet
-exec --no-startup-id sleep 1; birdtray
-exec --no-startup-id sleep 1; slack
+exec --no-startup-id sleep .3; guake
+exec --no-startup-id sleep .3; firefox
+exec --no-startup-id sleep .3; gnome-terminal
+exec --no-startup-id sleep .3; thunderbird
+exec --no-startup-id sleep .3; nm-applet
+exec --no-startup-id sleep .3; birdtray
+exec --no-startup-id sleep .3; slack
 # exec --no-startup-id dropbox start
 
 #####################
