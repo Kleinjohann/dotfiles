@@ -152,6 +152,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'janko/vim-test'
 
 " Navigation
+Plug 'majutsushi/tagbar'
 Plug 'francoiscabrol/ranger.vim'
 
 " Searching
@@ -186,6 +187,9 @@ Plug 'dense-analysis/ale'
 if has("python3")
     Plug 'Valloric/YouCompleteMe'
 endif
+
+" Motions
+Plug 'justinmk/vim-sneak'
 
 " Operators
 Plug 'christoomey/vim-sort-motion'
@@ -272,6 +276,9 @@ let g:airline_symbols = {}
 endif
 let g:airline_symbols.branch = 'שׂ'
 let g:airline_symbols.notexists = ' ∄'
+
+" tagbar
+nmap <leader>n :TagbarOpenAutoClose<CR>
 
 " netrw
 let g:netrw_fastbrowse = 0
