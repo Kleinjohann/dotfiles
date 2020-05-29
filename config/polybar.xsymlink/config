@@ -62,7 +62,7 @@ font-0 = FiraCode Nerd Font:size=10:weight=retina;2
 
 modules-left = i3
 modules-center = date
-modules-right = xbacklight pulseaudio cpu memory battery powermenu
+modules-right = xbacklight pulseaudio cpu-info temperature memory-info battery powermenu
 
 tray-position = ${env:TRAYPOS:}
 tray-padding = 1
@@ -217,6 +217,22 @@ format-prefix = " "
 format-prefix-foreground = ${colors.magenta}
 format-foreground = ${colors.magenta}
 label = %percentage:2%%
+
+[module/cpu-info]
+type = custom/script
+exec = ~/.config/polybar/scripts/cpu.sh
+click-left = ~/.config/polybar/scripts/cpu.sh --popup
+format-prefix = " "
+format-prefix-foreground = ${colors.magenta}
+format-foreground = ${colors.magenta}
+
+[module/memory-info]
+type = custom/script
+exec = ~/.config/polybar/scripts/memory.sh
+click-left = ~/.config/polybar/scripts/memory.sh --popup
+format-prefix = " "
+format-prefix-foreground = ${colors.orange}
+format-foreground = ${colors.orange}
 
 [module/memory]
 type = internal/memory
@@ -393,12 +409,15 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-format = <ramp> <label>
-format-background= #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-background= ${self.format-background}
+format-prefix = " "
+format-prefix-foreground = ${colors.green}
+format = <label>
+format-warn = <label-warn>
+format-warn-prefix = " "
+format-warn-prefix-foreground = ${colors.yellow}
 
 label = %temperature-c%
+label-foreground = ${colors.green}
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.yellow}
 
