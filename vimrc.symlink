@@ -279,6 +279,10 @@ let g:netrw_fastbrowse = 0
 " tslime
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
+nmap tt :call Send_keys_to_Tmux("C-[ C-p Enter")<CR>
+vmap ts <Plug>SendSelectionToTmux
+nmap ts <Plug>NormalModeSendToTmux
+nmap tr <Plug>SetTmuxVars
 
 " vim-test
 let g:test#strategy = "tslime"
