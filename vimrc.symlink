@@ -387,10 +387,6 @@ au BufNewFile,BufRead *.rules set syntax=snakemake
 au BufNewFile,BufRead *.snakefile set syntax=snakemake
 au BufNewFile,BufRead *.snake set syntax=snakemake
 
-" Latex Math Syntax in Markdown
-let g:tex_conceal = ""
-let g:vim_markdown_math = 1
-
 " automatically set paste / nopaste when pasting
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
