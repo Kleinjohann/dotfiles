@@ -169,6 +169,16 @@ handle_image() {
                      -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
                 && exit 6 || exit 1;;
 
+        # EPS
+        application/postscript)
+            gs -dSAFER \
+               -dBATCH \
+               -dNOPAUSE \
+               -dEPSCrop \
+               -r"${DEFAULT_SIZE}" \
+               -sDEVICE=pngalpha \
+               -sOutputFile="${IMAGE_CACHE_PATH%.png}" -- "${FILE_PATH}" \
+            && exit 6 || exit 1;;
 
         ## ePub, MOBI, FB2 (using Calibre)
         # application/epub+zip|application/x-mobipocket-ebook|\
