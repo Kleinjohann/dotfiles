@@ -149,7 +149,7 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Tests
-Plug 'vim-test/vim-test', { 'commit': 'c9d644c95b3ca4be1f8ba7d1ae9b8e8dfbdca018' }
+Plug 'vim-test/vim-test'
 
 " Navigation
 Plug 'majutsushi/tagbar'
