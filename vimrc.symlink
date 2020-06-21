@@ -82,7 +82,7 @@ set hlsearch
 set nofixendofline
 
 " never autoinsert a completion option
-set completeopt=preview,menuone,noselect,noinsert
+set completeopt=preview,menuone
 
 " move beyond end of line in block selection mode
 set virtualedit=block
