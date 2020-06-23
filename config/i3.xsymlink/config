@@ -83,6 +83,9 @@ bindsym Shift+Print exec flameshot full -p ~/Pictures
 # toggle opacity for the current workspace
 bindsym $mod+o exec xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null | xargs -n 1 transset 2 -tx 2 -i
 
+# reset opacity for the current workspace
+bindsym $mod+Shift+o exec xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null | xargs -n 1 transset 1 -i
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
