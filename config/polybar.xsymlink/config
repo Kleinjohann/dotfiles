@@ -62,7 +62,7 @@ font-0 = FiraCode Nerd Font:size=10:weight=retina;2
 
 modules-left = i3
 modules-center = date
-modules-right = xbacklight pulseaudio cpu-info temperature memory-info battery powermenu
+modules-right = xbacklight pulseaudio-control cpu-info temperature memory-info battery powermenu
 
 tray-position = ${env:TRAYPOS:}
 tray-padding = 1
@@ -300,6 +300,21 @@ format-background = ${colors.background}
 format-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+label=%output%
+; format-underline = ${colors.blue}
+
+exec = ~/.config/polybar/scripts/pulseaudio-control.bash listen
+click-right = exec pavucontrol &
+click-left = ~/.config/polybar/scripts/pulseaudio-control.bash togmute
+click-middle = ~/.config/polybar/scripts/pulseaudio-control.bash next-sink
+scroll-up = ~/.config/polybar/scripts/pulseaudio-control.bash up
+scroll-down = ~/.config/polybar/scripts/pulseaudio-control.bash down
+label-padding = 0
+label-foreground = ${colors.blue}
 
 [module/pulseaudio]
 type = internal/pulseaudio
