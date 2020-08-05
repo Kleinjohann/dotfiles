@@ -1,6 +1,6 @@
 #!/bin/bash
 
-xrandr --output DP2-2 --auto --left-of eDP1
+mons -e left
 nitrogen --restore
 killall polybar > /dev/null 2>&1
 sleep 1

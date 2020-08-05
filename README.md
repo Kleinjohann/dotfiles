@@ -7,6 +7,7 @@
 - [i3lock-color](https://github.com/Raymo111/i3lock-color)
 - [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
 - [Flameshot](https://github.com/lupoDharkael/flameshot) (also available via apt)
+- [mons](https://github.com/Ventto/mons)
 - [rg](https://github.com/BurntSushi/ripgrep) (also available via apt)
 
 ## Installation Tips

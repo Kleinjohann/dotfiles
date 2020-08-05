@@ -1,4 +1,4 @@
 #!/bin/bash
 
-xrandr --output DP2-2 --off
+mons -o
 nitrogen --restore
