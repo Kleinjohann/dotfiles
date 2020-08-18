@@ -144,7 +144,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Tmux
-Plug 'jgdavey/tslime.vim'
+Plug 'jgdavey/tslime.vim', { 'branch': 'main' }
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
