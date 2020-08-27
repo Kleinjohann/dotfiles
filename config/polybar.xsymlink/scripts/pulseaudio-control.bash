@@ -25,6 +25,7 @@ SINK_BLACKLIST=(
 # Maps PulseAudio sink names to human-readable names
 declare -A SINK_NICKNAMES
 SINK_NICKNAMES["alsa_output.pci-0000_00_1f.3.analog-stereo"]="Internal"
+SINK_NICKNAMES["alsa_output.usb-Generic_ThinkPad_Dock_USB_Audio-00.analog-stereo"]="Dock"
 
 
 # Environment & global constants for the script
