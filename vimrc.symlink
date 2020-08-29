@@ -141,6 +141,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Git
 Plug 'airblade/vim-gitgutter'
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'tpope/vim-fugitive'
 
 " Tmux
@@ -358,6 +359,9 @@ nmap <leader>gs :Gstatus<CR>
 nmap <leader>gl :G log<CR>
 nmap <leader>gb :Gblame<CR>
 nmap <leader>gr :Gread<CR>
+
+" fzf-checkout mappings
+nnoremap <C-C> :GBranches<CR>
 
 " git gutter mappings
 let g:gitgutter_map_keys = 0
