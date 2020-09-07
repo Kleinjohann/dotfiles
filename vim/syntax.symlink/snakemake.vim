@@ -40,11 +40,12 @@ source $VIMRUNTIME/syntax/python.vim
 " version    = "version" ":" statement
 " run        = "run" ":" ni statement
 " shell      = "shell" ":" stringliteral
+" conda      = "conda" ":" stringliteral
 
 syn keyword pythonStatement	include workdir onsuccess onerror
 syn keyword pythonStatement	ruleorder localrules configfile wildcard_constraints
 syn keyword pythonStatement	touch protected temp wrapper
-syn keyword pythonStatement	input output params message threads resources
+syn keyword pythonStatement	input output params message threads resources conda
 syn keyword pythonStatement	version run shell benchmark snakefile log script
 syn keyword pythonStatement	rule checkpoint subworkflow nextgroup=pythonFunction skipwhite
 
