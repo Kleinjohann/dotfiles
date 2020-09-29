@@ -240,7 +240,7 @@ label = %percentage:2%%
 [module/mail]
 type = custom/script
 exec = ~/.config/polybar/scripts/check_mail.sh
-click-left = thunderbird &
+click-left = wmctrl -a Thunderbird
 format-foreground = ${colors.foreground}
 
 [module/cpu-info]
