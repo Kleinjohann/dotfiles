@@ -51,6 +51,7 @@ exec --no-startup-id sleep 1; guake
 exec --no-startup-id sleep 1; vivaldi
 exec --no-startup-id sleep 1; gnome-terminal
 exec --no-startup-id sleep 1; thunderbird
+exec --no-startup-id sleep 1; nm-applet
 exec --no-startup-id sleep 1; slack
 # exec --no-startup-id dropbox start
 
