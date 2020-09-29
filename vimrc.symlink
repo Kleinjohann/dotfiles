@@ -157,6 +157,7 @@ Plug 'majutsushi/tagbar'
 Plug 'francoiscabrol/ranger.vim'
 
 " Searching
+Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim', { 'do': 'mkdir -p ~/bin && wget -qO ~/bin/ack https://beyondgrep.com/ack-v3.1.2 && chmod 0755 ~/bin/ack' }
