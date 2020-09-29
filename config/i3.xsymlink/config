@@ -42,7 +42,7 @@ exec --no-startup-id sleep 1; setxkbmap -option 'caps:ctrl_modifier'
 # apply custom mappings
 exec --no-startup-id sleep 2; xmodmap ~/.Xmodmap
 # start compton
-exec --no-startup-id sleep 1; compton --config ~/.config/compton.conf -b
+exec --no-startup-id sleep 1; picom --experimental-backends --config ~/.config/picom.conf -b
 exec_always sleep 1; ~/.config/i3/scripts/gnome-keyring.sh
 exec_always sleep 2; ~/.config/i3/scripts/launch_polybar.sh
 exec --no-startup-id sleep 1; killall -q /usr/lib/gnome-settings-daemon/gsd-print-notifications
