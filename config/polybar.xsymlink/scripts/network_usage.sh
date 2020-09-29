@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COUNTER_FILE=/dev/shm/polybar_network_usage
+COUNTER_FILE="/dev/shm/polybar_network_usage_$MONITOR"
 REFRESH=5
 
 get_icon_by_device()
