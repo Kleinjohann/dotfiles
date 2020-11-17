@@ -5,7 +5,7 @@ set -ga terminal-overrides ",*256col*:Tc"
 
 # Start windows and panes at 1, not 0
 set -g base-index 1
-set -g pane-base-index 1
+setw -g pane-base-index 1
 
 # prefix
 unbind C-b
@@ -118,6 +118,10 @@ unbind '"'
 set -g set-titles on
 set -g set-titles-string "#S"
 
+# set tmux-window title to current folder basename
+set-option -g automatic-rename on
+set-option -g automatic-rename-format '#{b:pane_current_path}'
+
 # notifications and bells
 set -g bell-action any
 set -g visual-bell off
@@ -129,12 +133,8 @@ bind-key H select-layout even-horizontal
 # toggle mouse mode
 bind-key m set mouse
 
-# detach all other clients
-bind-key S detach-client -a
-
-# rebind session and window tree to disable preview
-bind-key s choose-tree -s -N
-bind-key w choose-tree -w -N
+# detach all other clients of the current session
+bind-key S detach-client -as "#S"
 
 # Move current window position left/right
 bind-key -r > swap-window -t :+1
@@ -155,7 +155,6 @@ set -g status-right-style "none"
 set -g status-style "fg=$c_dark_grey,bg=$c_dark_grey,none"
 set -g status-right-length "100"
 set -g status-left-length "100"
-setw -g window-status-activity-attr "none"
 setw -g window-status-activity-style "fg=$c_red,bg=$c_black,none"
 set -g status-left "${prefix_on}#[fg=$c_black,bg=$status_bg,bold]Session:#[nobold] #S${prefix_on}#[fg=$c_black,bg=$c_black]"
 set -g status-right "#[fg=$c_alt_fg,bg=$c_light_grey]${uptime} ${copy_mode} #[fg=$c_black,bg=$status_bg]${prefix_on}#h${prefix_on}"
