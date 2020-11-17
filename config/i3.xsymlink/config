@@ -25,7 +25,7 @@ focus_follows_mouse no
 ###########################
 #  Workspace Assignments  #
 ###########################
-assign [class="^vivaldi-stable$"] → 1
+assign [class="^Vivaldi-stable$"] → 1
 assign [class="^Zotero$"] → 2
 assign [class="^Lyx$"] → 3
 assign [class="^Gnome-terminal$"] → 4
@@ -222,6 +222,8 @@ for_window [window_role="task_dialog"]   floating enable
 for_window [window_role="Preferences"]   floating enable
 for_window [window_type="dialog"]        floating enable
 for_window [window_type="menu"]          floating enable
+
+for_window [class="zoom" title="zoom"]   floating enable
 
 set $black #242424
 set $base00 #262626
