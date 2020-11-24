@@ -40,17 +40,17 @@ assign [class="^zoom$"] → 11
 # map caps-lock to ctrl
 exec --no-startup-id sleep 1; setxkbmap -option 'caps:ctrl_modifier'
 # apply custom mappings
-exec --no-startup-id sleep 2; xmodmap ~/.Xmodmap
+exec --no-startup-id sleep 3; xmodmap ~/.Xmodmap
 # start compton
 exec --no-startup-id sleep 1; picom --experimental-backends --config ~/.config/picom.conf -b
-exec_always sleep 1; ~/.config/i3/scripts/gnome-keyring.sh
-exec_always sleep 2; ~/.config/i3/scripts/launch_polybar.sh
+exec_always sleep 3; ~/.config/i3/scripts/gnome-keyring.sh
+exec_always sleep 3; ~/.config/i3/scripts/launch_polybar.sh
 exec --no-startup-id sleep 1; killall -q /usr/lib/gnome-settings-daemon/gsd-print-notifications
 exec --no-startup-id sleep 2; dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id sleep 1; nitrogen --restore
-exec --no-startup-id sleep 1; guake
+exec --no-startup-id sleep 2; guake
 exec --no-startup-id sleep 1; vivaldi
-exec --no-startup-id sleep 1; gnome-terminal
+exec --no-startup-id sleep 2; gnome-terminal
 exec --no-startup-id sleep 1; thunderbird
 exec --no-startup-id sleep 1; nm-applet
 exec --no-startup-id sleep 1; slack
@@ -61,9 +61,9 @@ exec --no-startup-id sleep 1; keepassxc
 #  Multimedia Keys  #
 #####################
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
