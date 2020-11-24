@@ -58,7 +58,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = FiraCode Nerd Font:size=10:weight=retina;2
+font-0 = "FiraCode Nerd Font:style=Retina:size=10;2"
 
 modules-left = i3 dunst mail
 modules-center = date
