@@ -244,8 +244,10 @@ let g:ranger_replace_netrw = 1 " open ranger when opening a directory
 " YouCompleteMe Settings
 set rtp+=~/.vim/bundle/YouCompleteMe
 let g:ycm_server_python_interpreter="/usr/bin/python3"
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_insertion=1
 map <leader>d  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>D  :YcmCompleter GetDoc<CR>
+map <C-Q>  :pc<CR>
 
 " ultisnips settings
 let g:UltiSnipsExpandTrigger="<C-s>"
