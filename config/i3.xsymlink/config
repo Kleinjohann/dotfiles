@@ -31,7 +31,7 @@ assign [class="^Lyx$"] → 3
 assign [class="^Gnome-terminal$"] → 4
 assign [class="^Thunderbird$"] → 5
 assign [class="^Slack$"] → 6
-assign [class="^keepassxc$"] → 9
+assign [class="^KeePassXC$"] → 9
 assign [class="^zoom$"] → 11
 
 ###############
