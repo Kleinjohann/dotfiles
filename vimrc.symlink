@@ -115,6 +115,9 @@ set sidescrolloff=5
 set winheight=5
 set winminheight=5
 
+" make Y yank to end of line
+nnoremap Y y$
+
 " neovim specifics
 if has('nvim')
     " link neovim to the correct python version
