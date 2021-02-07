@@ -30,7 +30,7 @@ override_git_prompt_colors() {
         GIT_PROMPT_COMMAND_OK="$background_green$foreground_black ✔ $background_magenta$foreground_green$triangle"
         GIT_PROMPT_COMMAND_FAIL="$background_red$foreground_black ✘ _LAST_COMMAND_STATE_ $background_magenta$foreground_red$triangle"
         GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_$background_magenta$foreground_black ranger \$(
-            [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_blue$foreground_magenta$triangle$foreground_black '"\$CONDA_DEFAULT_ENV"' $background_yellow$foreground_blue$triangle' || echo '$background_yellow$foreground_magenta$triangle'
+        [[ -n \$CONDA_DEFAULT_ENV ]] && echo \"$background_blue$foreground_magenta$triangle$foreground_black \$(basename \"\$CONDA_DEFAULT_ENV\") $background_yellow$foreground_blue$triangle\" || echo '$background_yellow$foreground_magenta$triangle'
             )$background_yellow$foreground_black \w $background_black$foreground_yellow$triangle"
     else
         GIT_PROMPT_COMMAND_OK="$background_green$foreground_black ✔ \$(
@@ -40,7 +40,7 @@ override_git_prompt_colors() {
             [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_blue' || echo '$background_yellow'
             )$foreground_red$triangle"
         GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_\$(
-            [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_blue$foreground_black '"\$CONDA_DEFAULT_ENV"' $background_yellow$foreground_blue$triangle' || echo '$background_yellow'
+            [[ -n \$CONDA_DEFAULT_ENV ]] && echo \"$background_blue$foreground_black \$(basename \"\$CONDA_DEFAULT_ENV\") $background_yellow$foreground_blue$triangle\" || echo '$background_yellow'
             )$background_yellow$foreground_black \w $background_black$foreground_yellow$triangle"
     fi
     GIT_PROMPT_PREFIX="$background_black$foreground_brightwhite  $background_orange$foreground_black$triangle"
