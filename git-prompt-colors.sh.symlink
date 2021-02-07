@@ -1,0 +1,66 @@
+# vi: ft=sh
+
+local triangle=$'\uE0B0'
+local background_black="\\[\\e[48;5;0m\\]"
+local background_red="\\[\\e[48;5;1m\\]"
+local background_green="\\[\\e[48;5;2m\\]"
+local background_yellow="\\[\\e[48;5;3m\\]"
+local background_blue="\\[\\e[48;5;4m\\]"
+local background_magenta="\\[\\e[48;5;5m\\]"
+local background_cyan="\\[\\e[48;5;6m\\]"
+local background_white="\\[\\e[48;5;7m\\]"
+local background_orange="\\[\\e[48;5;16m\\]"
+local background_brightblack="\\[\\e[48;5;19m\\]"
+local foreground_black="\\[\\e[38;5;0m\\]"
+local foreground_red="\\[\\e[38;5;1m\\]"
+local foreground_green="\\[\\e[38;5;2m\\]"
+local foreground_yellow="\\[\\e[38;5;3m\\]"
+local foreground_blue="\\[\\e[38;5;4m\\]"
+local foreground_magenta="\\[\\e[38;5;5m\\]"
+local foreground_cyan="\\[\\e[38;5;6m\\]"
+local foreground_white="\\[\\e[38;5;7m\\]"
+local foreground_brightwhite="\\[\\e[38;5;15m\\]"
+local foreground_orange="\\[\\e[38;5;16m\\]"
+local foreground_brightblack="\\[\\e[38;5;19m\\]"
+
+override_git_prompt_colors() {
+    GIT_PROMPT_THEME_NAME="Custom"
+    GIT_PROMPT_VIRTUALENV=""
+    if [ -n "$RANGER_LEVEL" ]; then
+        GIT_PROMPT_COMMAND_OK="$background_green$foreground_black ✔ $background_magenta$foreground_green$triangle"
+        GIT_PROMPT_COMMAND_FAIL="$background_red$foreground_black ✘ _LAST_COMMAND_STATE_ $background_magenta$foreground_red$triangle"
+        GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_$background_magenta$foreground_black ranger \$(
+            [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_blue$foreground_magenta$triangle$foreground_black '"\$CONDA_DEFAULT_ENV"' $background_yellow$foreground_blue$triangle' || echo '$background_yellow$foreground_magenta$triangle'
+            )$background_yellow$foreground_black \w $background_black$foreground_yellow$triangle"
+    else
+        GIT_PROMPT_COMMAND_OK="$background_green$foreground_black ✔ \$(
+            [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_blue' || echo '$background_yellow'
+            )$foreground_green$triangle"
+        GIT_PROMPT_COMMAND_FAIL="$background_red$foreground_black ✘ _LAST_COMMAND_STATE_ \$(
+            [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_blue' || echo '$background_yellow'
+            )$foreground_red$triangle"
+        GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_\$(
+            [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_blue$foreground_black '"\$CONDA_DEFAULT_ENV"' $background_yellow$foreground_blue$triangle' || echo '$background_yellow'
+            )$background_yellow$foreground_black \w $background_black$foreground_yellow$triangle"
+    fi
+    GIT_PROMPT_PREFIX="$background_black$foreground_brightwhite  $background_orange$foreground_black$triangle"
+    GIT_PROMPT_SYMBOLS_AHEAD=" $foreground_brightwhite "
+    GIT_PROMPT_SYMBOLS_BEHIND=" $foreground_brightwhite "
+    GIT_PROMPT_BRANCH="$background_orange$foreground_black "
+    GIT_PROMPT_UPSTREAM="$background_orange $background_cyan$foreground_orange$triangle$foreground_black _UPSTREAM_ $background_brightblack$foreground_cyan$triangle"
+    GIT_PROMPT_REMOTE=""
+    GIT_PROMPT_SEPARATOR=""
+    GIT_PROMPT_STAGED="$background_brightblack$foreground_magenta  "
+    GIT_PROMPT_CHANGED="$background_brightblack$foreground_red  "
+    GIT_PROMPT_UNTRACKED="$background_brightblack$foreground_green  "
+    GIT_PROMPT_CONFLICTS="$background_brightblack$foreground_red  "
+    GIT_PROMPT_STASHED="$background_brightblack $foreground_yellow "
+    GIT_PROMPT_CLEAN="$background_brightblack$foreground_green ✔ "
+    GIT_PROMPT_SUFFIX="$background_brightblack $background_black$foreground_brightblack$triangle"
+    GIT_PROMPT_END_USER="$background_black$foreground_white \n\$(date +%H:%M) $ "
+    GIT_PROMPT_END_ROOT=" $background_black$foreground_white \n\$(date +%H:%M) # "
+
+}
+
+# load the theme
+reload_git_prompt_colors "Custom"

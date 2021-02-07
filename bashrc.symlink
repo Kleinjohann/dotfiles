@@ -49,12 +49,6 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# Colour Prompt
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
-# Prepend '[ranger]' to prompt if the shell was spawned by ranger
-if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -119,52 +113,8 @@ alias deact="conda deactivate"
 # Git Prompt
 GIT_PROMPT_ONLY_IN_REPO=0
 GIT_PROMPT_SHOW_UPSTREAM=1 # show upstream tracking branch
+GIT_PROMPT_THEME=Custom
 source ~/.bash-git-prompt/gitprompt.sh
-triangle=$'\uE0B0'
-background_black="\\[\\e[48;5;0m\\]"
-background_red="\\[\\e[48;5;1m\\]"
-background_green="\\[\\e[48;5;2m\\]"
-background_yellow="\\[\\e[48;5;3m\\]"
-background_blue="\\[\\e[48;5;4m\\]"
-background_magenta="\\[\\e[48;5;5m\\]"
-background_cyan="\\[\\e[48;5;6m\\]"
-background_brightblack="\\[\\e[48;5;19m\\]"
-foreground_black="\\[\\e[38;5;0m\\]"
-foreground_red="\\[\\e[38;5;1m\\]"
-foreground_green="\\[\\e[38;5;2m\\]"
-foreground_yellow="\\[\\e[38;5;3m\\]"
-foreground_blue="\\[\\e[38;5;4m\\]"
-foreground_magenta="\\[\\e[38;5;5m\\]"
-foreground_cyan="\\[\\e[38;5;6m\\]"
-foreground_white="\\[\\e[38;5;7m\\]"
-foreground_brightwhite="\\[\\e[38;5;15m\\]"
-foreground_brightblack="\\[\\e[38;5;19m\\]"
-GIT_PROMPT_VIRTUALENV=""
-GIT_PROMPT_COMMAND_OK="$background_green$foreground_black ✔ \$(
-    [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_cyan' || echo '$background_yellow'
-    )$foreground_green$triangle"
-GIT_PROMPT_COMMAND_FAIL="$background_red$foreground_black ✘ _LAST_COMMAND_STATE_ \$(
-    [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_cyan' || echo '$background_yellow'
-    )$foreground_red$triangle"
-GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_\$(
-    [[ -n \$CONDA_DEFAULT_ENV ]] && echo '$background_cyan$foreground_black '"\$CONDA_DEFAULT_ENV"' $background_yellow$foreground_cyan$triangle' || echo '$background_yellow'
-    )$background_yellow$foreground_black \w $background_black$foreground_yellow$triangle"
-GIT_PROMPT_PREFIX="$background_black$foreground_brightwhite  $background_magenta$foreground_black$triangle"
-GIT_PROMPT_SYMBOLS_AHEAD=" $foreground_brightwhite "
-GIT_PROMPT_SYMBOLS_BEHIND=" $foreground_brightwhite "
-GIT_PROMPT_BRANCH="$background_magenta$foreground_black "
-GIT_PROMPT_UPSTREAM="$background_magenta $background_blue$foreground_magenta$triangle$foreground_black _UPSTREAM_ $background_brightblack$foreground_blue$triangle"
-GIT_PROMPT_REMOTE=""
-GIT_PROMPT_SEPARATOR=""
-GIT_PROMPT_STAGED="$background_brightblack$foreground_magenta  "
-GIT_PROMPT_CHANGED="$background_brightblack$foreground_red  "
-GIT_PROMPT_UNTRACKED="$background_brightblack$foreground_green  "
-GIT_PROMPT_CONFLICTS="$background_brightblack$foreground_red  "
-GIT_PROMPT_STASHED="$background_brightblack $foreground_yellow "
-GIT_PROMPT_CLEAN="$background_brightblack$foreground_green ✔ "
-GIT_PROMPT_SUFFIX="$background_brightblack $background_black$foreground_brightblack$triangle"
-GIT_PROMPT_END_USER="$background_black$foreground_white \n\$(date +%H:%M) $ "
-GIT_PROMPT_END_ROOT=" $background_black$foreground_white \n\$(date +%H:%M) # "
 
 # Autojump
 # if installed for the current user only
