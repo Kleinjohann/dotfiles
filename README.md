@@ -25,6 +25,10 @@ Disclaimer: use at your own risk, no full installation instructions as of now, n
 - [ag](https://github.com/ggreer/the_silver_searcher)
 - [flake8](https://flake8.pycqa.org/en/latest/index.html)
 - [miniconda](https://docs.conda.io/en/latest/miniconda.html)
+    - currently assumed to be located at `~/software/miniconda3`
+    - this would have to be changed in:
+        - `bashrc.symlink` (manual miniconda initialisation)
+        - `vimrc.symlink` (only for neovim, environment for neovim python package)
 - [neovim](https://github.com/neovim/neovim)
 - [rg](https://github.com/BurntSushi/ripgrep)
 
