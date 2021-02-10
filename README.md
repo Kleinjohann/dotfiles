@@ -35,16 +35,26 @@ Disclaimer: use at your own risk, no full installation instructions as of now, n
 ### Full Desktop Environment (Optional, create symlinks with `-x` flag)
 
 - all submodules of this repo
-- [dunst](https://github.com/dunst-project/dunst)
-- [feh](https://feh.finalrewind.org)
-- [Flameshot](https://github.com/lupoDharkael/flameshot)
 - [i3](https://github.com/i3/i3)
-- [i3lock-color](https://github.com/Raymo111/i3lock-color)
-- [mons](https://github.com/Ventto/mons)
-- [noisetorch](https://github.com/lawl/NoiseTorch)
-- [picom](https://github.com/yshui/picom)
-- [polybar](https://github.com/polybar/polybar)
-- [zathura](https://git.pwmt.org/pwmt/zathura)
+- Bindings and/or configs for these exist, but nothing else breaks without them:
+    - all autostarts and workspace assignments in the i3 config
+    - [dunst](https://github.com/dunst-project/dunst)
+    - [feh](https://feh.finalrewind.org)
+    - [Flameshot](https://github.com/lupoDharkael/flameshot)
+    - [guake](https://github.com/Guake/guake)
+        - change the screenlock binding if you don't use this
+    - [i3lock-color](https://github.com/Raymo111/i3lock-color)
+    - [mons](https://github.com/Ventto/mons)
+    - [NetworkManager](https://wiki.gnome.org/Projects/NetworkManager)
+        - disable polybar module if you don't use this
+    - [nitrogen](https://github.com/l3ib/nitrogen)
+    - [noisetorch](https://github.com/lawl/NoiseTorch)
+    - [picom](https://github.com/yshui/picom)
+    - [polybar](https://github.com/polybar/polybar)
+    - [ueberzug](https://github.com/seebye/ueberzug)
+        - change the ranger preview method if you don't use this (only configured when passing `-x` flag, anyway)
+    - [zathura](https://git.pwmt.org/pwmt/zathura)
+        - change the view method for vimtex if you don't use this
 
 ## Installation Tips
 
