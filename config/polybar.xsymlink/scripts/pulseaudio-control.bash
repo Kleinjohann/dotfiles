@@ -219,7 +219,6 @@ function nextSink() {
 
     if [ $NOTIFICATIONS = "yes" ]; then
         getNickname "$newSink"
-        
         if command -v dunstify &>/dev/null; then
             notify="dunstify --replace 201839192"
         else
