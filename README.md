@@ -4,7 +4,7 @@ Disclaimer: use at your own risk, no full installation instructions as of now, n
 
 ## Installation
 
-<mark>Run `create_symlinks.sh` to create symlinks to the configuration files in this repo in your home directory. Optionally pass the `-x` flag to add configuration files for the full desktop environment, see below. You will be propted to backup or delete existing configuration files, see code and comments in `create_symlinks.sh`.</mark>
+<span style="background-color: #FFFF00">Run `create_symlinks.sh` to create symlinks to the configuration files in this repo in your home directory. Optionally pass the `-x` flag to add configuration files for the full desktop environment, see below. You will be propted to backup or delete existing configuration files, see code and comments in `create_symlinks.sh`.</span>
 
 ## Requirements
 
