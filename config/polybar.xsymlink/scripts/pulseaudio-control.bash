@@ -26,6 +26,7 @@ SINK_BLACKLIST=(
 declare -A SINK_NICKNAMES
 SINK_NICKNAMES["alsa_output.pci-0000_00_1f.3.analog-stereo"]="Internal"
 SINK_NICKNAMES["alsa_output.usb-Generic_ThinkPad_Dock_USB_Audio-00.analog-stereo"]="Dock"
+SINK_NICKNAMES["echoCancel_sink"]="Echo-Cancel"
 
 
 # Environment & global constants for the script
