@@ -27,6 +27,10 @@ declare -A SINK_NICKNAMES
 SINK_NICKNAMES["alsa_output.pci-0000_00_1f.3.analog-stereo"]="Internal"
 SINK_NICKNAMES["alsa_output.usb-Generic_ThinkPad_Dock_USB_Audio-00.analog-stereo"]="Dock"
 SINK_NICKNAMES["echoCancel_sink"]="Echo-Cancel"
+SINK_NICKNAMES["alsa_output.pci-0000_00_1f.3.hdmi-stereo-extra1"]="HDMI"
+SINK_NICKNAMES["alsa_output.pci-0000_00_1f.3.hdmi-stereo-extra2"]="HDMI"
+SINK_NICKNAMES["alsa_output.pci-0000_00_1f.3.hdmi-stereo-extra3"]="HDMI"
+SINK_NICKNAMES["alsa_output.pci-0000_00_1f.3.hdmi-stereo-extra4"]="HDMI"
 
 
 # Environment & global constants for the script
