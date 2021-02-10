@@ -60,7 +60,7 @@ Description=Lock screen before suspend
 Before=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
 
 [Service]
-User=kleinjohann
+User=user
 Type=simple
 Environment=DISPLAY=:0
 ExecStart=/bin/sh -c "~/.config/i3/scripts/lock_screen.sh"
@@ -76,7 +76,7 @@ Description=Wait for Screen Lock
 Before=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
 
 [Service]
-User=kleinjohann
+User=user
 Type=oneshot
 Environment=DISPLAY=:0
 ExecStart=/bin/sleep 3
