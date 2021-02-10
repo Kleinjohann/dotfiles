@@ -1,22 +1,48 @@
 # dotfiles
 
-## Non-Obvious Requirements
+Disclaimer: use at your own risk, no full installation instructions as of now, not everything is nicely organised and documented
 
-- [ag](https://github.com/ggreer/the_silver_searcher) (also available via apt)
-- [autojump](https://github.com/wting/autojump) (also available via apt)
-- [i3lock-color](https://github.com/Raymo111/i3lock-color)
+## Requirements
+
+### Necessary
+
+- [autojump](https://github.com/wting/autojump)
 - [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
-- [Flameshot](https://github.com/lupoDharkael/flameshot) (also available via apt)
+- [ranger](https://github.com/ranger/ranger)
+- submodules:
+    - base-16-shell
+    - bash-git-prompt
+    - ranger_devicons
+- [tmux](https://github.com/tmux/tmux)
+- [vim](https://github.com/vim/vim) (optionally replaced by neovim)
+
+### Optional
+
+- [ag](https://github.com/ggreer/the_silver_searcher)
+- [neovim](https://github.com/neovim/neovim)
+- [rg](https://github.com/BurntSushi/ripgrep)
+
+### Full Desktop Environment (Optional, create symlinks with `-x` flag)
+
+- all submodules of this repo
+- [dunst](https://github.com/dunst-project/dunst)
+- [feh](https://feh.finalrewind.org)
+- [flake8](https://flake8.pycqa.org/en/latest/index.html)
+- [Flameshot](https://github.com/lupoDharkael/flameshot)
+- [i3](https://github.com/i3/i3)
+- [i3lock-color](https://github.com/Raymo111/i3lock-color)
 - [mons](https://github.com/Ventto/mons)
 - [noisetorch](https://github.com/lawl/NoiseTorch)
-- [rg](https://github.com/BurntSushi/ripgrep) (also available via apt)
+- [picom](https://github.com/yshui/picom)
+- [polybar](https://github.com/polybar/polybar)
+- [zathura](https://git.pwmt.org/pwmt/zathura)
 
 ## Installation Tips
 
 - [compile polybar](https://gist.github.com/kuznero/f4e983c708cd2bdcadc97be695baacf8)
 - [install tmux locally without root access](https://gist.github.com/smsharma/0003b61a571cab63ad80)
 
-## Services
+## Services / Hooks
 
 automatically lock screen on suspend/sleep/hibernate
 ```
@@ -28,7 +54,7 @@ Before=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.
 User=kleinjohann
 Type=simple
 Environment=DISPLAY=:0
-ExecStart=/home/kleinjohann/.config/i3/scripts/lock_screen.sh
+ExecStart=/bin/sh -c "~/.config/i3/scripts/lock_screen.sh"
 
 [Install]
 WantedBy=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
