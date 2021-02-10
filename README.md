@@ -8,6 +8,7 @@
 - [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
 - [Flameshot](https://github.com/lupoDharkael/flameshot) (also available via apt)
 - [mons](https://github.com/Ventto/mons)
+- [noisetorch](https://github.com/lawl/NoiseTorch)
 - [rg](https://github.com/BurntSushi/ripgrep) (also available via apt)
 
 ## Installation Tips
