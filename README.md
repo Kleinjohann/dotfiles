@@ -2,6 +2,10 @@
 
 Disclaimer: use at your own risk, no full installation instructions as of now, not everything is nicely organised and documented
 
+## Installation
+
+<mark>Run `create_symlinks.sh` to create symlinks to the configuration files in this repo in your home directory. Optionally pass the `-x` flag to add configuration files for the full desktop environment, see below. You will be propted to backup or delete existing configuration files, see code and comments in `create_symlinks.sh`.</mark>
+
 ## Requirements
 
 ### Necessary
@@ -19,6 +23,8 @@ Disclaimer: use at your own risk, no full installation instructions as of now, n
 ### Optional
 
 - [ag](https://github.com/ggreer/the_silver_searcher)
+- [flake8](https://flake8.pycqa.org/en/latest/index.html)
+- [miniconda](https://docs.conda.io/en/latest/miniconda.html)
 - [neovim](https://github.com/neovim/neovim)
 - [rg](https://github.com/BurntSushi/ripgrep)
 
@@ -27,7 +33,6 @@ Disclaimer: use at your own risk, no full installation instructions as of now, n
 - all submodules of this repo
 - [dunst](https://github.com/dunst-project/dunst)
 - [feh](https://feh.finalrewind.org)
-- [flake8](https://flake8.pycqa.org/en/latest/index.html)
 - [Flameshot](https://github.com/lupoDharkael/flameshot)
 - [i3](https://github.com/i3/i3)
 - [i3lock-color](https://github.com/Raymo111/i3lock-color)
