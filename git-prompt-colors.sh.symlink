@@ -52,7 +52,7 @@ override_git_prompt_colors() {
     GIT_PROMPT_UPSTREAM="$background_orange $background_cyan$foreground_orange$triangle$foreground_black _UPSTREAM_ $background_brightblack$foreground_cyan$triangle"
     GIT_PROMPT_SYMBOLS_NO_REMOTE_TRACKING="$background_orange $background_cyan$foreground_orange$triangle$foreground_black  $background_brightblack$foreground_cyan$triangle"
     GIT_PROMPT_REMOTE=""
-    GIT_PROMPT_SEPARATOR='$( [[ -n $(git branch --show-current) ]] || echo "'"$background_orange $foreground_orange$background_brightblack$triangle"'" )'
+    GIT_PROMPT_SEPARATOR='$( [[ -n $(git symbolic-ref -q HEAD) ]] || echo "'"$background_orange $foreground_orange$background_brightblack$triangle"'" )'
     GIT_PROMPT_STAGED="$background_brightblack$foreground_magenta  "
     GIT_PROMPT_CHANGED="$background_brightblack$foreground_red  "
     GIT_PROMPT_UNTRACKED="$background_brightblack$foreground_green  "
