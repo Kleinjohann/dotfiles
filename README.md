@@ -4,7 +4,7 @@
 
 ## Screenshots
 
-![](/screenshots/desktop_with_notifications.png?raw=true)
+![](/screenshots/desktop_with_notification.png?raw=true)
 ![](/screenshots/tmux_with_vim_and_prompt.png?raw=true)
 
 ## Installation
