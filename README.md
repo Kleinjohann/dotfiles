@@ -46,9 +46,9 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
     - [dunst](https://github.com/dunst-project/dunst)
     - [feh](https://feh.finalrewind.org)
     - [Flameshot](https://github.com/lupoDharkael/flameshot)
-    - [guake](https://github.com/Guake/guake)
-        - change the screenlock binding if you don't use this
+    - [kitty](https://sw.kovidgoyal.net/kitty/)
     - [i3lock-color](https://github.com/Raymo111/i3lock-color)
+        - change the screenlock binding if you don't use this
     - [mons](https://github.com/Ventto/mons)
     - [NetworkManager](https://wiki.gnome.org/Projects/NetworkManager)
         - disable polybar module if you don't use this

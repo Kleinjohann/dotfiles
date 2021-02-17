@@ -1,5 +1,7 @@
 # vi: ft=sh
 
+export TERM='xterm-256color'
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -146,25 +148,18 @@ tm() {
 }
 
 # start a new tmux session and set its name to the current hostname
-# if running in guake, set the name to 'dropdown'
+# if this is the scratchpad window, set the name to 'scratchpad'
 # if a session with the respective name exists, attach to it instead
 # stay in current session if the shell was spawned by ranger
 # (check if getting the version returns an error first to make sure tmux can be started)
 if tmux -V > /dev/null 2>&1 &&  ! [[ -n "$RANGER_LEVEL" ]]; then
-    host_terminal=$(basename "/"$(ps -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/^.* //'))
-    guake_session_name=dropdown
+    scratchpad_session_name=scratchpad
     terminal_session_name=${HOSTNAME/./·}
-    case $host_terminal in
-        $guake_session_name|$terminal_session_name)
-            :
-            ;;
-        guake)
-            tm $guake_session_name
-            ;;
-        *)
-            tm $terminal_session_name
-            ;;
-    esac
+    if [[ -n $scratchpad ]]; then
+        tm $scratchpad_session_name
+    else
+        tm $terminal_session_name
+    fi
 fi
 
 
