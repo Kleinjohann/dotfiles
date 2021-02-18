@@ -16,7 +16,8 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
 ### Necessary
 
 - [autojump](https://github.com/wting/autojump)
-- [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+- a [Nerd Font](https://github.com/ryanoasis/nerd-fonts) for glyphs and Powerline characters
+    - all configs in here use Fira Code and Fantasque Sans Mono
 - [ranger](https://github.com/ranger/ranger)
 - submodules:
     - base-16-shell
