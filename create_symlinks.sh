@@ -76,10 +76,10 @@ mv_and_rename_if_target_exists() {
         do
             let n+=1
         done
-        mv -r "$file" "$target_dir/${stripext}_$n.$extension"
+        mv "$file" "$target_dir/${stripext}_$n.$extension"
 
     else
-        mv -r "$file" "$target_dir/$basename"
+        mv "$file" "$target_dir/$basename"
 
     fi
 
