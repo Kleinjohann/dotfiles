@@ -150,9 +150,9 @@ tm() {
 # start a new tmux session and set its name to the current hostname
 # if this is the scratchpad window, set the name to 'scratchpad'
 # if a session with the respective name exists, attach to it instead
-# stay in current session if the shell was spawned by ranger
+# stay in current session if already in a tmux session
 # (check if getting the version returns an error first to make sure tmux can be started)
-if tmux -V > /dev/null 2>&1 &&  ! [[ -n "$RANGER_LEVEL" ]]; then
+if tmux -V > /dev/null 2>&1 &&  ! [[ -n "$TMUX" ]]; then
     scratchpad_session_name=scratchpad
     terminal_session_name=${HOSTNAME/./·}
     if [[ -n $scratchpad ]]; then
