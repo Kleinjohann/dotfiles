@@ -51,7 +51,7 @@ exec --no-startup-id sleep 1; killall -q /usr/lib/gnome-settings-daemon/gsd-prin
 exec --no-startup-id sleep 2; dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id sleep 1; nitrogen --restore
 exec --no-startup-id sleep 1; vivaldi
-exec --no-startup-id sleep 2; kitty --session startup.session
+exec --no-startup-id sleep 2; kitty --session ~/.config/kitty/startup.session
 exec --no-startup-id sleep 1; thunderbird
 exec --no-startup-id sleep 1; nm-applet
 exec --no-startup-id sleep 1; slack
