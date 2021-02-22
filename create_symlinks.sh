@@ -48,7 +48,7 @@ create_new_symlink() {
     mkdir -p "$parent_folder"
 
     ln -s "$file_loc" "$symlink_loc"
-    echo "Created a symlink $symlink_loc -> $file_loc"
+    printf "Created a symlink $symlink_loc -> $file_loc\n\n"
 }
 
 invalid_file_error() {
@@ -91,13 +91,13 @@ handle_existing_regular_file() {
 
     if [[ $REPLY =~ ^[Dd]$ ]]
     then
-        printf "\nDeleting $symlink_loc..."
+        printf "\nDeleting $symlink_loc...\n"
 
         rm -rf "$symlink_loc"
         create_new_symlink "$file_loc" "$symlink_loc"
 
     elif [[ $REPLY =~ ^[Mm]$ ]]; then
-        printf "\nMoving $symlink_loc to $BACKUPPATH..."
+        printf "\nMoving $symlink_loc to $BACKUPPATH...\n"
 
         mkdir -p "$BACKUPPATH"
         mv_and_rename_if_target_exists "$symlink_loc" "$BACKUPPATH"
