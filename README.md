@@ -36,6 +36,7 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
         - `bashrc.symlink` (manual miniconda initialisation)
         - `vimrc.symlink` (only for neovim, environment for neovim python package)
 - [neovim](https://github.com/neovim/neovim)
+    - change vimtex compiler method if you don't use this
 - [rg](https://github.com/BurntSushi/ripgrep)
 
 ### Full Desktop Environment (Optional, create symlinks with `-x` flag)
