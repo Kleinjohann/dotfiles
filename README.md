@@ -1,6 +1,6 @@
 # dotfiles
 
-**Disclaimer: _use at your own risk_, no full installation instructions as of now, not everything is nicely organised and documented**
+My dotfiles. I started from [Achilleas Koutsou](https://github.com/achilleas-k)'s configs for some of these, see e.g. his [vim configuration](https://github.com/achilleas-k/vimconfig).
 
 ## Screenshots
 
