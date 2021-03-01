@@ -1,0 +1,68 @@
+" vi: ft=vim
+
+if has('nvim')
+    " set up nvim runtime paths
+    set runtimepath^=~/.vim runtimepath+=~/.vim/after
+    let &packpath = &runtimepath
+endif
+
+call plug#begin('~/.vim/bundle')
+
+" Visuals
+Plug 'chriskempson/base16-vim'
+Plug 'machakann/vim-highlightedyank'
+
+" Motions
+Plug 'justinmk/vim-sneak'
+
+" Meta
+Plug 'kana/vim-textobj-user'
+
+" Text Objects
+Plug 'Julian/vim-textobj-variable-segment'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
+Plug 'wellle/targets.vim'
+
+" Tmux
+Plug 'roxma/vim-tmux-clipboard'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
+call plug#end()
+
+" automatically match the theme to the one set by base16-shell
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+" make comments italic
+highlight Comment cterm=italic
+
+" Snakemake Syntax Highlighting
+au BufNewFile,BufRead Snakefile set syntax=snakemake
+au BufNewFile,BufRead *.rules set syntax=snakemake
+au BufNewFile,BufRead *.snakefile set syntax=snakemake
+au BufNewFile,BufRead *.snake set syntax=snakemake
+
+" Common options
+set hlsearch
+set ignorecase
+set smartcase
+set nomodifiable
+
+" Scroll Offset (outside of less mode)
+set scrolloff=5
+set sidescrolloff=5
+
+" vimpager specifics
+let g:vimpager = {}
+let g:less     = {}
+
+let g:less.enabled = 1
+let g:less.scrolloff = 5
+let g:less.hlsearch = 1
+let g:vimpager.passthrough = 1
+let g:vimpager.disable_x11 = 1
+let g:vimpager.disable_ansiesc = 1

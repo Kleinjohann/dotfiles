@@ -136,6 +136,9 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
+" Pager
+Plug 'rkitover/vimpager'
+
 " Visuals
 Plug 'chriskempson/base16-vim'
 Plug 'machakann/vim-highlightedyank'
