@@ -354,11 +354,11 @@ nmap <leader>w :w<CR>
 
 " fugitive mappings
 nmap <leader>gw :Gwrite<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gd :Gdiff<CR>
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gl :G log<CR>
-nmap <leader>gb :Gblame<CR>
+nmap <leader>gc :Git commit<CR>
+nmap <leader>gd :Gdiffsplit<CR>
+nmap <leader>gs :Git<CR>
+nmap <leader>gl :Git log<CR>
+nmap <leader>gb :Git blame<CR>
 nmap <leader>gr :Gread<CR>
 
 " fzf-checkout mappings
