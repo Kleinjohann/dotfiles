@@ -15,6 +15,9 @@ pactl load-module module-echo-cancel use_master_format=1 aec_method=webrtc aec_a
 # set your output device to the echo cancelled sink
 pacmd set-default-sink echoCancel_sink
 
-# start NoiseTorch with the echo cancelled source
-noisetorch -i -s "echoCancel_source"
+# set your input device to the echo cancelled source
+pacmd set-default-source echoCancel_source
+
+# start NoiseTorch with the echo cancelled source (default)
+noisetorch -i
 
