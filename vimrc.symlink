@@ -322,6 +322,10 @@ nmap <silent> t<C-g> :TestVisit<CR>
 nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
 
+" Quickfix Navigation
+noremap <silent> <C-j> :cn<CR>
+noremap <silent> <C-k> :cp<CR>
+
 " Buffer Navigation
 noremap <silent> <leader>]  :bn<CR>
 noremap <silent> <leader>[  :bp<CR>
