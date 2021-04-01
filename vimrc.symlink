@@ -176,6 +176,7 @@ Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/BufOnly.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 " Undo
@@ -329,6 +330,7 @@ noremap <silent> <C-k> :cp<CR>
 " Buffer Navigation
 noremap <silent> <leader>]  :bn<CR>
 noremap <silent> <leader>[  :bp<CR>
+noremap <silent> <leader>bo :BufOnly<CR>
 noremap <silent> <leader>`  <C-^>
 
 " Tab Navigation
