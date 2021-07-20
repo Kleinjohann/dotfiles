@@ -1,4 +1,5 @@
 set selection-clipboard clipboard
+set sandbox none
 
 # Base16 Gruvbox dark, pale
 # Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
