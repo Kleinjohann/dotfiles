@@ -49,6 +49,7 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
     - [feh](https://feh.finalrewind.org)
     - [Flameshot](https://github.com/lupoDharkael/flameshot)
     - [kitty](https://sw.kovidgoyal.net/kitty/)
+    - [i3lock-fancy-dualmonitor](https://github.com/meskarune/i3lock-fancy/tree/dualmonitors)
     - [i3lock-color](https://github.com/Raymo111/i3lock-color)
         - change the screenlock binding if you don't use this
     - [mons](https://github.com/Ventto/mons)
@@ -58,6 +59,7 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
     - [noisetorch](https://github.com/lawl/NoiseTorch)
     - [picom](https://github.com/yshui/picom)
     - [polybar](https://github.com/polybar/polybar)
+    - [rofi](https://github.com/davatorium/rofi)
     - [ueberzug](https://github.com/seebye/ueberzug)
         - change the ranger preview method if you don't use this (only configured when passing `-x` flag, anyway)
     - [zathura](https://git.pwmt.org/pwmt/zathura)
