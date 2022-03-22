@@ -200,6 +200,23 @@ if command -v thefuck -> /dev/null; then
     eval $(thefuck --alias)
 fi
 
+# keep current directory when exiting ranger with `Q`
+function ranger {
+  local IFS=$'\t\n'
+  local tempfile="$(mktemp -t tmp.XXXXXX)"
+  local ranger_cmd=(
+    command
+    ranger
+    --cmd="map Q chain shell echo %d > \"$tempfile\"; quitall"
+  )
+
+  ${ranger_cmd[@]} "$@"
+  if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$PWD" ]]; then
+    cd -- "$(cat -- "$tempfile")" || return
+  fi
+  command rm -f -- "$tempfile" 2>/dev/null
+}
+
 # Add an `r` function that opens ranger either at the given directory or
 # at the one autojump suggests
 r() {
