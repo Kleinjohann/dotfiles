@@ -60,6 +60,7 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
     - [picom](https://github.com/yshui/picom)
     - [polybar](https://github.com/polybar/polybar)
     - [rofi](https://github.com/davatorium/rofi)
+    - [rofi-calc](https://github.com/svenstaro/rofi-calc)
     - [ueberzug](https://github.com/seebye/ueberzug)
         - change the ranger preview method if you don't use this (only configured when passing `-x` flag, anyway)
     - [zathura](https://git.pwmt.org/pwmt/zathura)
