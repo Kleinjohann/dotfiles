@@ -115,15 +115,13 @@ set sidescrolloff=5
 set winheight=5
 set winminheight=5
 
-" make Y yank to end of line
-nnoremap Y y$
-
 " neovim specifics
 if has('nvim')
     " link neovim to the correct python version
     let g:python3_host_prog = expand('$HOME/software/miniconda3/envs/neovim/bin/python')
     " Incremental Find & Replace
     set inccommand=split
+    set undodir=~/.vim/nvim-undo/
 endif
 
 " Automatically install vim-plug if it's not installed
@@ -322,6 +320,9 @@ nmap <silent> t<C-g> :TestVisit<CR>
 " Faster Scrolling
 nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
+
+" make Y yank to end of line
+nnoremap Y y$
 
 " Quickfix Navigation
 noremap <silent> <C-j> :cn<CR>
