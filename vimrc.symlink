@@ -312,7 +312,7 @@ nmap tr <Plug>SetTmuxVars
 " vim-test
 let g:test#strategy = "tslime"
 let g:test#preserve_screen = 1
-let g:test#python#runner = 'nose'
+let g:test#python#runner = 'pytest'
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
