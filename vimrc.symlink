@@ -228,6 +228,9 @@ if executable('ag')
     Plug 'alok/notational-fzf-vim'
 endif
 
+" Snakemake
+Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+
 call plug#end()
 
 " notes
@@ -398,12 +401,6 @@ endif
 " show Tabs and Whitespaces
 :set list
 :set listchars=tab:>·,nbsp:␣,trail:•,precedes:«,extends:»
-
-" Snakemake Syntax Highlighting
-au BufNewFile,BufRead Snakefile set syntax=snakemake
-au BufNewFile,BufRead *.rules set syntax=snakemake
-au BufNewFile,BufRead *.snakefile set syntax=snakemake
-au BufNewFile,BufRead *.snake set syntax=snakemake
 
 " automatically set paste / nopaste when pasting
 let &t_SI .= "\<Esc>[?2004h"
