@@ -169,6 +169,9 @@ Plug 'mileszs/ack.vim', { 'do': 'mkdir -p ~/bin && wget -qO ~/bin/ack https://be
 " Folding
 Plug 'Konfekt/FastFold'
 
+" Mail
+Plug 'adborden/vim-notmuch-address'
+
 " Meta
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'

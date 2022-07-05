@@ -31,12 +31,11 @@ assign [class="^Lyx$"] → 3
 assign [class="^kitty$"] → 4
 for_window [class="kitty" title="scratchpad"] move scratchpad
 for_window [class="kitty" title="scratchpad"] resize set 800 450
-assign [class="^Thunderbird$"] → 5
-assign [class="^Slack$"] → 6
+assign [class="(?i)^astroid"] → 5
 assign [class="^KeePassXC$"] → 9
-assign [class="^zoom$"] → 11
+assign [class="(?i)^zoom"] → 11
 assign [title="^join\?"] → 11
-assign [title="^Zoom"] → 11
+assign [title="(?i)^zoom"] → 11
 
 ###############
 #  Autostart  #
@@ -55,9 +54,8 @@ exec --no-startup-id sleep 1; nitrogen --restore
 exec --no-startup-id sleep 1; vivaldi
 exec --no-startup-id sleep 2; kitty --session ~/.config/kitty/scratchpad.session
 exec --no-startup-id sleep 2; kitty
-exec --no-startup-id sleep 1; thunderbird
+exec --no-startup-id sleep 1; astroid
 exec --no-startup-id sleep 1; nm-applet
-exec --no-startup-id sleep 1; slack
 exec --no-startup-id sleep 1; dropbox start
 exec --no-startup-id sleep 1; keepassxc
 exec --no-startup-id sleep 2; ~/.config/i3/scripts/denoise_mic.sh
