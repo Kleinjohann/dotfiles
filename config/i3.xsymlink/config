@@ -76,6 +76,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 bindsym XF86TouchpadToggle exec ~/.config/i3/scripts/toggle_touchpad.sh # toggle touchpad
 # Wifi
 bindsym XF86WLAN exec ~/.config/i3/scripts/toggle-wifi.sh
+# load x config for current screen setup
+bindsym XF86Display exec autorandr -c
 
 # toggle scratchpad
 bindsym F12 scratchpad show

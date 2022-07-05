@@ -1,3 +1,6 @@
+# autorandr profiles
+config/autorandr.xsymlink/*/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

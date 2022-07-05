@@ -45,6 +45,7 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
 - [i3](https://github.com/i3/i3)
 - Bindings and/or configs for these exist, but nothing else breaks without them:
     - all autostarts and workspace assignments in the i3 config
+    - [autorandr](https://github.com/phillipberndt/autorandr)
     - [dunst](https://github.com/dunst-project/dunst)
     - [feh](https://feh.finalrewind.org)
     - [Flameshot](https://github.com/lupoDharkael/flameshot)
