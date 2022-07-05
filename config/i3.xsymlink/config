@@ -83,6 +83,8 @@ bindsym F12 scratchpad show
 # move workspace to left and right monitors
 bindsym $mod+Shift+bracketleft move workspace to output left
 bindsym $mod+Shift+bracketright move workspace to output right
+bindsym $mod+Shift+comma move workspace to output up
+bindsym $mod+Shift+period move workspace to output down
 
 # Screenshots
 bindsym Print exec flameshot gui -p ~/Pictures
