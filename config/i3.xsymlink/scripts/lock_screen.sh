@@ -5,6 +5,6 @@ if [[ $(pgrep -u $UID -x i3lock) ]] ; then
 fi
 
 ~/.config/i3/scripts/notifications.sh off
-~/.config/i3/scripts/i3lock-fancy-dualmonitor.sh -f FiraCode Nerd Font
+~/.config/i3/scripts/i3lock-multimonitor/lock
 ~/.config/i3/scripts/notifications.sh on
 

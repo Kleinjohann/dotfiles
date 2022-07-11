@@ -7,3 +7,6 @@
 [submodule "bash-git-prompt.symlink"]
 	path = bash-git-prompt.symlink
 	url = git@github.com:magicmonty/bash-git-prompt.git
+[submodule "config/i3.xsymlink/scripts/i3lock-multimonitor"]
+	path = config/i3.xsymlink/scripts/i3lock-multimonitor
+	url = git@github.com:ShikherVerma/i3lock-multimonitor.git
