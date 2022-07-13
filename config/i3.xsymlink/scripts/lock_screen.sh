@@ -11,7 +11,8 @@ TEXT='#dab997ff'
 WRONG='#d75f5fff'
 VERIFYING='#ffaf00ff'
 
-ARGS="--insidever-color=$CLEAR
+ARGS="--nofork\
+      --insidever-color=$CLEAR\
       --ringver-color=$VERIFYING\
       --insidewrong-color=$CLEAR\
       --ringwrong-color=$WRONG\
