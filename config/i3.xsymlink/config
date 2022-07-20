@@ -27,7 +27,7 @@ focus_follows_mouse no
 ###########################
 assign [class="^Vivaldi-stable$"] → 1
 assign [class="^Zotero$"] → 2
-assign [class="^Lyx$"] → 3
+assign [class="(?i)^lyx"] → 3
 assign [class="^kitty$"] → 4
 for_window [class="kitty" title="scratchpad"] move scratchpad
 for_window [class="kitty" title="scratchpad"] resize set 800 450
