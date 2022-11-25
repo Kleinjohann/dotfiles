@@ -147,6 +147,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " Tmux
 Plug 'jgdavey/tslime.vim', { 'branch': 'main' }
@@ -175,6 +176,7 @@ Plug 'adborden/vim-notmuch-address'
 " Meta
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-textobj-user'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/BufOnly.vim'
