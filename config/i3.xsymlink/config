@@ -87,8 +87,8 @@ bindsym $mod+Shift+comma move workspace to output up
 bindsym $mod+Shift+period move workspace to output down
 
 # Screenshots
-bindsym Print exec flameshot gui -p ~/Pictures
-bindsym Shift+Print exec flameshot full -p ~/Pictures
+bindsym Print exec flameshot gui
+bindsym Shift+Print exec flameshot full
 
 # toggle opacity for the current workspace
 bindsym $mod+o exec xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null | xargs -n 1 transset 2 -tx 2 -i
