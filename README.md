@@ -30,6 +30,7 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
 
 - [ag](https://github.com/ggreer/the_silver_searcher)
 - [flake8](https://flake8.pycqa.org/en/latest/index.html)
+- [keychain](https://www.funtoo.org/Funtoo:Keychain)
 - [miniconda](https://docs.conda.io/en/latest/miniconda.html)
     - currently assumed to be located at `~/software/miniconda3`
     - this would have to be changed in:

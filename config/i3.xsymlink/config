@@ -46,7 +46,6 @@ exec --no-startup-id sleep 1; setxkbmap -option 'caps:ctrl_modifier'
 exec --no-startup-id sleep 3; xmodmap ~/.Xmodmap
 # start compton
 exec --no-startup-id sleep 1; picom --experimental-backends --config ~/.config/picom.conf -b
-exec_always sleep 3; ~/.config/i3/scripts/gnome-keyring.sh
 exec_always sleep 3; ~/.config/i3/scripts/launch_polybar.sh
 exec --no-startup-id sleep 1; killall -q /usr/lib/gnome-settings-daemon/gsd-print-notifications
 exec --no-startup-id sleep 2; dunst -config ~/.config/dunst/dunstrc
