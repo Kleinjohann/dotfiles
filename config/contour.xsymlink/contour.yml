@@ -116,7 +116,7 @@ on_mouse_select: CopyToSelectionClipboard
 # Determines whether the instance is reloading the configuration files whenever it is changing or not.
 #
 # Default: false
-live_config: true
+live_config: false
 
 # Inline image related default configuration and limits
 # -----------------------------------------------------
@@ -257,7 +257,7 @@ profiles:
         # Font related configuration (font face, styles, size, rendering mode).
         font:
             # Initial font size in pixels.
-            size: 10
+            size: 10.5
 
             # DPI scaling factor applied on top of the system configured on (default: 1.0).
             dpi_scale: 1.0
