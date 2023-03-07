@@ -225,6 +225,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 
 " LaTeX
+Plug 'anufrievroman/vim-angry-reviewer'
 Plug 'lervag/vimtex'
 
 " Markdown
@@ -244,6 +245,8 @@ let g:nv_search_paths = ['~/Documents/Notes']
 let g:mkdx#settings = { 'map': { 'prefix': 'm' } }
 
 " tex
+let g:AngryReviewerEnglish = 'british'
+nnoremap <leader>ar :AngryReviewer<cr>
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_compiler_progname='nvr'
@@ -260,6 +263,11 @@ if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
 endif
 au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
+let g:vimtex_grammar_textidote = {
+    \ 'jar': '~/software/textidote/textidote.jar',
+    \ 'args': '--read-all --firstlang de --replace replacements.txt --remove-macros TODO,captionsetup',
+    \}
+map <localleader>lt  :compiler textidote\|make<CR>
 
 " ranger
 let g:ranger_replace_netrw = 1 " open ranger when opening a directory
