@@ -28,9 +28,9 @@ focus_follows_mouse no
 assign [class="^Vivaldi-stable$"] → 1
 assign [class="^Zotero$"] → 2
 assign [class="(?i)^lyx"] → 3
-assign [class="^kitty$"] → 4
-for_window [class="kitty" title="scratchpad"] move scratchpad
-for_window [class="kitty" title="scratchpad"] resize set 800 450
+assign [class="^contour$"] → 4
+for_window [class="contour" title="scratchpad"] move scratchpad
+for_window [class="contour" title="scratchpad"] resize set 800 450
 assign [class="(?i)^astroid"] → 5
 assign [class="^KeePassXC$"] → 9
 assign [class="(?i)^zoom"] → 11
@@ -52,8 +52,8 @@ exec --no-startup-id sleep 1; killall -q /usr/lib/gnome-settings-daemon/gsd-prin
 exec --no-startup-id sleep 2; dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id sleep 1; nitrogen --restore
 exec --no-startup-id sleep 1; vivaldi
-exec --no-startup-id sleep 2; kitty --session ~/.config/kitty/scratchpad.session
-exec --no-startup-id sleep 2; kitty
+exec --no-startup-id sleep 2; contour profile scratchpad
+exec --no-startup-id sleep 2; contour profile main
 exec --no-startup-id sleep 1; astroid
 exec --no-startup-id sleep 1; nm-applet
 exec --no-startup-id sleep 1; dropbox start
@@ -100,7 +100,7 @@ bindsym $mod+Shift+o exec xdotool search --all --onlyvisible --desktop $(xprop -
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec contour profile main
 
 # kill focused window
 bindsym $mod+q kill
