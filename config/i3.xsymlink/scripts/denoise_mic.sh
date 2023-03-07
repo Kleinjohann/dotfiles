@@ -10,13 +10,13 @@ noisetorch -u
 pactl unload-module module-echo-cancel
 
 # load the echo cancel module
-pactl load-module module-echo-cancel use_master_format=1 aec_method=webrtc aec_args="analog_gain_control=0\ digital_gain_control=1\ noise_suppression=1" source_name=echoCancel_source sink_name=echoCancel_sink
+pactl load-module module-echo-cancel use_master_format=1 aec_method=webrtc aec_args="analog_gain_control=0\ digital_gain_control=1\ noise_suppression=1" source_name=echo-cancel-source sink_name=echo-cancel-sink
 
 # set your output device to the echo cancelled sink
-pacmd set-default-sink echoCancel_sink
+pactl set-default-sink echo-cancel-sink
 
 # set your input device to the echo cancelled source
-pacmd set-default-source echoCancel_source
+pactl set-default-source echo-cancel-source
 
 # start NoiseTorch with the echo cancelled source (default)
 noisetorch -i
