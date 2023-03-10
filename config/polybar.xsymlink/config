@@ -62,7 +62,7 @@ font-0 = "FiraCode Nerd Font:style=Retina:size=10;2"
 
 modules-left = i3 dunst mail-notmuch
 modules-center = date
-modules-right = pulseaudio-control cpu-info temperature memory-info network_usage battery powermenu
+modules-right = pipewire-simple cpu-info temperature memory-info network_usage battery powermenu
 
 tray-position = ""
 tray-padding = 1
@@ -331,6 +331,16 @@ format-background = ${colors.background}
 format-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
+
+[module/pipewire-simple]
+type = custom/script
+exec = ~/.config/polybar/scripts/pipewire-simple.sh
+interval = .1
+click-right = exec pavucontrol &
+click-left = ~/.config/polybar/scripts/pipewire-simple.sh --mute &
+scroll-up = ~/.config/polybar/scripts/pipewire-simple.sh --up &
+scroll-down = ~/.config/polybar/scripts/pipewire-simple.sh --down &
+label-foreground = ${colors.blue}
 
 [module/pulseaudio-control]
 type = custom/script

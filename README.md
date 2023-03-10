@@ -30,6 +30,7 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
 
 - [ag](https://github.com/ggreer/the_silver_searcher)
 - [flake8](https://flake8.pycqa.org/en/latest/index.html)
+- [keychain](https://www.funtoo.org/Funtoo:Keychain)
 - [miniconda](https://docs.conda.io/en/latest/miniconda.html)
     - currently assumed to be located at `~/software/miniconda3`
     - this would have to be changed in:
@@ -50,7 +51,7 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
     - [dunst](https://github.com/dunst-project/dunst)
     - [feh](https://feh.finalrewind.org)
     - [Flameshot](https://github.com/lupoDharkael/flameshot)
-    - [kitty](https://sw.kovidgoyal.net/kitty/)
+    - [contour](https://github.com/contour-terminal/contour)
     - [i3lock-fancy-dualmonitor](https://github.com/meskarune/i3lock-fancy/tree/dualmonitors)
     - [i3lock-color](https://github.com/Raymo111/i3lock-color)
         - change the screenlock binding if you don't use this
