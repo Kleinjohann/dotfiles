@@ -78,8 +78,8 @@ keybinds clear-defaults=true {
     tmux {
         bind "Esc" { SwitchToMode "Scroll"; }
         bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
-        bind "=" { NewPane "Down"; SwitchToMode "Normal"; }
-        bind "-" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "=" { NewPane "Right"; SwitchToMode "Normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "c" { NewTab; SwitchToMode "Normal"; }
         bind "," { SwitchToMode "RenameTab"; }
