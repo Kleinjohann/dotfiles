@@ -168,8 +168,9 @@
         "on-click": "pavucontrol"
     },
     "custom/power": {
-        "format":"",
-        "on-click":"swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Suspend' 'swaymsg exec systemctl suspend' -b 'reboot' 'systemctl reboot' -b 'shutdown' 'systemctl poweroff'" },
+        "format":" ",
+        "on-click":"bash ~/.config/sway/scripts/powermenu.sh"
+    },
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",

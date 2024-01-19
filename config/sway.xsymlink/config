@@ -69,12 +69,8 @@ input "type:touchpad" {
     pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
 }
 
-# exit with confirmation dialog on mod+shift+e
-bindsym Mod4+shift+e exec swaynag \
--t warning \
--m 'What do you want to do?' \
--b 'Poweroff' 'systemctl poweroff' \
--b 'Reboot' 'systemctl reboot'
+# power menu on mod+shift+e
+bindsym Mod4+shift+e exec ~/.config/sway/scripts/powermenu.sh
 
 #####################
 #  Multimedia Keys  #
