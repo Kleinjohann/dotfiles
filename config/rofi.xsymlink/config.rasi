@@ -3,7 +3,7 @@ configuration {
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
-/*	font: "mono 12";*/
+font: "FiraCode Nerd Font 18";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/
@@ -50,7 +50,6 @@ matching: "fuzzy";
 /*	window-format: "{w}    {i}{c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-/*	theme: ;*/
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
 /*	color-active: ;*/
@@ -137,4 +136,4 @@ matching: "fuzzy";
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
-@import "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
+@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"

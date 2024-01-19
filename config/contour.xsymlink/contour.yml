@@ -257,7 +257,7 @@ profiles:
         # Font related configuration (font face, styles, size, rendering mode).
         font:
             # Initial font size in pixels.
-            size: 10.5
+            size: 15
 
             # DPI scaling factor applied on top of the system configured on (default: 1.0).
             dpi_scale: 1.0
@@ -331,8 +331,8 @@ profiles:
             # If bold/italic/bold_italic are not explicitly specified, the regular font with
             # the respective weight and slant will be used.
             # bold: "FiraCode Bold Nerd Font"
-            italic: "FantasqueSansMono Nerd Font"
-            bold_italic: "FantasqueSansMono Nerd Font"
+            italic: "FantasqueSansM Nerd Font"
+            bold_italic: "FantasqueSansM Nerd Font"
 
             # This is a special font to be used for displaying unicode symbols
             # that are to be rendered in emoji presentation.
@@ -528,7 +528,7 @@ profiles:
         # Font related configuration (font face, styles, size, rendering mode).
         font:
             # Initial font size in pixels.
-            size: 10
+            size: 15
 
             # DPI scaling factor applied on top of the system configured on (default: 1.0).
             dpi_scale: 1.0

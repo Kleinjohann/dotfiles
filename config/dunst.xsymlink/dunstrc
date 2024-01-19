@@ -1,7 +1,7 @@
 # vim: ft=cfg
 
 [global]
-font = FiraCode Nerd Font
+font = FiraCode Nerd Font 18
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
