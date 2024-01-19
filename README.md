@@ -21,21 +21,16 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
 - [ranger](https://github.com/ranger/ranger)
 - submodules:
     - base-16-shell
-    - bash-git-prompt
     - ranger_devicons
 - [tmux](https://github.com/tmux/tmux)
 - [vim](https://github.com/vim/vim) (optionally replaced by neovim)
+- [zsh](https://www.zsh.org)
 
 ### Optional
 
 - [ag](https://github.com/ggreer/the_silver_searcher)
 - [flake8](https://flake8.pycqa.org/en/latest/index.html)
 - [keychain](https://www.funtoo.org/Funtoo:Keychain)
-- [miniconda](https://docs.conda.io/en/latest/miniconda.html)
-    - currently assumed to be located at `~/software/miniconda3`
-    - this would have to be changed in:
-        - `bashrc.symlink` (manual miniconda initialisation)
-        - `vimrc.symlink` (only for neovim, environment for neovim python package)
 - [neovim](https://github.com/neovim/neovim)
     - change vimtex compiler method if you don't use this
 - [rg](https://github.com/BurntSushi/ripgrep)
@@ -43,35 +38,26 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
 ### Full Desktop Environment (Optional, create symlinks with `-x` flag)
 
 - all submodules of this repo
-- [i3](https://github.com/i3/i3)
+- [sway](https://github.com/swaywm/sway)
 - Bindings and/or configs for these exist, but nothing else breaks without them:
     - all autostarts and workspace assignments in the i3 config
     - [astroid](https://github.com/astroidmail/astroid)
-    - [autorandr](https://github.com/phillipberndt/autorandr)
     - [dunst](https://github.com/dunst-project/dunst)
-    - [feh](https://feh.finalrewind.org)
-    - [Flameshot](https://github.com/lupoDharkael/flameshot)
     - [contour](https://github.com/contour-terminal/contour)
-    - [i3lock-fancy-dualmonitor](https://github.com/meskarune/i3lock-fancy/tree/dualmonitors)
-    - [i3lock-color](https://github.com/Raymo111/i3lock-color)
-        - change the screenlock binding if you don't use this
-    - [mons](https://github.com/Ventto/mons)
+    - [grim](https://github.com/emersion/grim) and [slurp](https://github.com/emersion/slurp)
     - [NetworkManager](https://wiki.gnome.org/Projects/NetworkManager)
         - disable polybar module if you don't use this
-    - [nitrogen](https://github.com/l3ib/nitrogen)
     - [noisetorch](https://github.com/lawl/NoiseTorch)
-    - [picom](https://github.com/yshui/picom)
-    - [polybar](https://github.com/polybar/polybar)
-    - [rofi](https://github.com/davatorium/rofi)
+    - [rofi with wayland support](https://github.com/lbonn/rofi#wayland-support)
     - [rofi-calc](https://github.com/svenstaro/rofi-calc)
-    - [ueberzug](https://github.com/seebye/ueberzug)
-        - change the ranger preview method if you don't use this (only configured when passing `-x` flag, anyway)
+    - [waybar](https://github.com/Alexays/Waybar)
+    - [waylock](https://codeberg.org/ifreund/waylock)
+    - [wl-clipboard](https://github.com/bugaevc/wl-clipboard)
     - [zathura](https://git.pwmt.org/pwmt/zathura)
         - change the view method for vimtex if you don't use this
 
 ## Installation Tips
 
-- [compile polybar](https://gist.github.com/kuznero/f4e983c708cd2bdcadc97be695baacf8)
 - [install tmux locally without root access](https://gist.github.com/smsharma/0003b61a571cab63ad80)
 
 ## Services / Hooks
@@ -86,7 +72,7 @@ Before=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.
 User=user
 Type=simple
 Environment=DISPLAY=:0
-ExecStart=/bin/sh -c "~/.config/i3/scripts/lock_screen.sh"
+ExecStart=/bin/sh -c "~/.config/sway/scripts/lock_screen.sh"
 
 [Install]
 WantedBy=sleep.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
