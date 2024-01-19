@@ -18,5 +18,7 @@
     path = ~/.gitconfig.local
 [pull]
     rebase = false
+[push]
+    autoSetupRemote = true
 [rerere]
     enabled = true
