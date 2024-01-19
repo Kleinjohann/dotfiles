@@ -1,0 +1,215 @@
+# Clone zcomet if necessary
+if [[ ! -f ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh ]]; then
+  git clone https://github.com/agkozak/zcomet.git ${ZDOTDIR:-${HOME}}/.zcomet/bin
+fi
+
+# Source zcomet.zsh
+source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
+
+zstyle :omz:plugins:keychain agents gpg,ssh
+zcomet snippet OMZ::plugins/keychain/keychain.plugin.zsh
+
+# completion options
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-/]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle :compinstall filename '/home/alex/.zshrc'
+
+autoload -Uz compinit
+compinit
+
+# keep all history
+HISTFILE=~/.zsh_history
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+
+setopt autocd extendedglob nomatch notify
+unsetopt beep
+
+# vim bindings
+bindkey -v
+
+# copied over from bashrc for now
+export TERM='xterm-256color'
+export HOSTNAME=$(hostname)
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# make vim the default editor
+if command -v nvim > /dev/null; then
+    export EDITOR='nvim'
+    export VISUAL='nvim'
+else
+    export EDITOR='vim'
+    export VISUAL='vim'
+fi
+
+# use vimpager
+export PAGER=~/.vim/bundle/vimpager/vimpager
+alias less=$PAGER
+alias zless=$PAGER
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alhF'
+alias la='ls -A'
+alias l='ls -CF'
+alias lss='ls -sh'
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+
+alias mkdir="mkdir -p"
+alias e="$EDITOR"
+alias v="$VISUAL"
+
+alias f='fuck'
+alias F='fuck --yeah'
+alias FUCK='fuck --yeah'
+alias duck='fuck'
+alias mist='fuck'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# prompt
+zcomet load romkatv/powerlevel10k
+
+zcomet load jeffreytse/zsh-vi-mode
+
+export FZF_DEFAULT_OPTS=$'--bind \'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | xclip -i -sel c)+abort\''
+
+source ~/.fzf/shell/key-bindings.zsh
+source ~/.fzf/shell/completion.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+zcomet load wting/autojump
+
+zcomet load chriskempson/base16-shell
+
+# Run compinit and compile its cache
+zcomet compinit
+
+if command -v thefuck -> /dev/null; then
+    eval $(thefuck --alias)
+fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# tm - create new tmux session, or switch to existing one. Works from within tmux too. (@bag-man)
+# `tm` will allow you to select your tmux session via fzf.
+# `tm irc` will attach to the irc session (if it exists), else it will create it.
+tm() {
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then
+    tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+}
+
+# start a new tmux session and set its name to the current hostname
+# if this is the scratchpad window, set the name to 'scratchpad'
+# if a session with the respective name exists, attach to it instead
+# stay in current session if already in a tmux session
+# (check if getting the version returns an error first to make sure tmux can be started)
+if tmux -V > /dev/null 2>&1 &&  ! [[ -n "$TMUX" ]]; then
+    scratchpad_session_name=scratchpad
+    terminal_session_name=${HOSTNAME/./·}
+    if [[ -n $scratchpad ]]; then
+        [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+        tmux $change -t "$scratchpad_session_name" 2>/dev/null || (tmux new-session -d -s "$scratchpad_session_name" && tmux $change -t "$scratchpad_session_name")
+    else
+        [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+        tmux $change -t "$terminal_session_name" 2>/dev/null || (tmux new-session -d -s "$terminal_session_name" && tmux $change -t "$terminal_session_name")
+    fi
+fi
+
+
+# use FZF when calling autojump without any arguments
+j() {
+    if [[ "$#" -ne 0 ]]; then
+            cd "$(autojump $@)"
+            return
+    fi
+    cd "$(autojump -s | sed '/_____/Q; s/^[0-9,.:]*\s*//' |  fzf --height 40% --reverse --inline-info)"
+    }
+
+# fshow - git commit browser
+fshow() {
+  git log --graph --color=always \
+        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+        --bind "ctrl-m:execute:
+                 (grep -o '[a-f0-9]\{7\}' | head -1 |
+                  xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                  {}
+  FZF-EOF"
+  }
+
+# using ripgrep combined with preview
+# find-in-file - usage: fif <searchTerm>
+fif() {
+  if [ "$#" -ne 1 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages $1 | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $1 || rg --ignore-case --pretty --context 10 $1 {}"
+}
+
+# keep current directory when exiting ranger with `Q`
+function ranger {
+  local IFS=$'\t\n'
+  local tempfile="$(mktemp -t tmp.XXXXXX)"
+  local ranger_cmd=(
+    command
+    ranger
+    --cmd="map Q chain shell echo %d > \"$tempfile\"; quitall"
+  )
+
+  ${ranger_cmd[@]} "$@"
+  if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$PWD" ]]; then
+    cd -- "$(cat -- "$tempfile")" || return
+  fi
+  command rm -f -- "$tempfile" 2>/dev/null
+}
+
+# Add an `r` function that opens ranger either at the given directory or
+# at the one autojump suggests
+r() {
+  if [ "$1" != "" ]; then
+    if [ -d "$1" ]; then
+      ranger "$1"
+    else
+      ranger "$(autojump $1)"
+    fi
+  else
+    ranger
+  fi
+  return $?
+}
