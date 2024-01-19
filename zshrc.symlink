@@ -30,6 +30,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
 
+# immediately share history, ignore duplicates and spaces
+setopt share_history extended_history hist_ignore_dups hist_ignore_space
+
 setopt autocd extendedglob nomatch notify
 unsetopt beep
 
@@ -106,6 +109,8 @@ zcomet load romkatv/powerlevel10k
 zcomet load jeffreytse/zsh-vi-mode
 
 export FZF_DEFAULT_OPTS=$'--bind \'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | wl-copy --trim-newline)+abort\''
+source ~/.fzf/shell/completion.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 zcomet load wting/autojump
 
@@ -214,6 +219,38 @@ r() {
 # see jeffreytse/zsh-vi-mode#24
 zvm_after_init() {
     source ~/.fzf/shell/key-bindings.zsh
-    source ~/.fzf/shell/completion.zsh
-    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+    # preserve options (see fzf/shell/completion.zsh
+    __fzf_completion_options="options=(${(j: :)${(kv)options[@]}})"
+    {
+    # Modified version of CTRL-R:
+    # do not match line numbers
+    # show time and date of command execution
+    # remove line number and asterisk from commands added by share_history
+    fzf-history-widget() {
+      local selected num
+      setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+      selected="$(fc -rli 1 | awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' |
+        FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} ${FZF_DEFAULT_OPTS-} -n2.. --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m" $(__fzfcmd))"
+      local ret=$?
+      if [ -n "$selected" ]; then
+        num=$(awk '{print $1}' <<< "$selected")
+        if [[ "$num" =~ ^[1-9][0-9*]*$ ]]; then
+          zle vi-fetch-history -n $num
+        else # selected is a custom query, not from history
+          LBUFFER="$selected"
+        fi
+      fi
+      zle reset-prompt
+      return $ret
+    }
+    zle     -N            fzf-history-widget
+    bindkey -M emacs '^R' fzf-history-widget
+    bindkey -M vicmd '^R' fzf-history-widget
+    bindkey -M viins '^R' fzf-history-widget
+
+    } always {
+      eval $__fzf_key_bindings_options
+      'unset' '__fzf_key_bindings_options'
+    }
 }
