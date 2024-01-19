@@ -339,8 +339,21 @@ function prompt_my_vcs() {
   [[ -z $VCS_STATUS_LOCAL_BRANCH && -z $VCS_STATUS_TAG ]] &&  # <-- this line
     p10k segment -f 0 -b 16 -i " " -t "${VCS_STATUS_COMMIT[1,8]}"
 
-  # Always show tracking branch name
-  p10k segment -f 0 -b 6 -t "${(V)VCS_STATUS_REMOTE_NAME//\%/%%}/${(V)VCS_STATUS_REMOTE_BRANCH//\%/%%}"
+  local tracking_info
+  # show icon if no tracking info
+  if [[ -z $VCS_STATUS_REMOTE_NAME ]]; then
+    tracking_info="󱓌"
+  # show remote if not origin
+  elif [[ ${(V)VCS_STATUS_REMOTE_NAME//\%/%%} != origin ]]; then
+    tracking_info="${(V)VCS_STATUS_REMOTE_NAME//\%/%%}/${(V)VCS_STATUS_REMOTE_BRANCH//\%/%%}"
+  # Show tracking branch name if it differs from local branch.
+  elif [[ -n ${VCS_STATUS_REMOTE_BRANCH:#$VCS_STATUS_LOCAL_BRANCH} ]]; then
+    tracking_info+="${(V)VCS_STATUS_REMOTE_BRANCH//\%/%%}"
+  fi
+
+  if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+    p10k segment -f 0 -b 6 -t "$tracking_info"
+  fi
 
   # Assemble output for file changes
   local res
