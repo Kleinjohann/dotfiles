@@ -3,10 +3,13 @@
 [alias]
     branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
     co = checkout
+    lg = log --pretty='%C(red)%h %Creset%C(yellow)%d%Creset%s %C(cyan)(%ar)%Creset'
     st = status
     sl = log --oneline --decorate -20
     sla = log --oneline --decorate --graph --all -20
     slap = log --oneline --decorate --graph --all
+    new = lg main..HEAD
+    missing = lg HEAD..main
 [fetch]
     prune = true
 [rebase]
@@ -15,3 +18,5 @@
     path = ~/.gitconfig.local
 [pull]
     rebase = false
+[rerere]
+    enabled = true
