@@ -119,7 +119,7 @@ bindsym $mod+Ctrl+l exec ~/.config/sway/scripts/lock_screen.sh
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | xclip -i -sel c"
+bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | wl-copy --trim-newline"
 
 # change focus
 bindsym $mod+h focus left

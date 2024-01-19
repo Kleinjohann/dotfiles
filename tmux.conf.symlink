@@ -103,8 +103,8 @@ unbind-key p
 unbind-key n
 bind-key p paste-buffer
 
-# system clipboard using xclip
-bind-key -Tcopy-mode-vi 'Y' send -X copy-pipe "xclip -i -sel c"
+# system clipboard using wl-copy
+bind-key -Tcopy-mode-vi 'Y' send -X copy-pipe "wl-copy --trim-newline"
 
 # new window at default path (home)
 bind C neww

@@ -105,7 +105,7 @@ zcomet load romkatv/powerlevel10k
 
 zcomet load jeffreytse/zsh-vi-mode
 
-export FZF_DEFAULT_OPTS=$'--bind \'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | xclip -i -sel c)+abort\''
+export FZF_DEFAULT_OPTS=$'--bind \'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | wl-copy --trim-newline)+abort\''
 
 zcomet load wting/autojump
 
