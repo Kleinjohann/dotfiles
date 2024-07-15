@@ -115,15 +115,6 @@ set sidescrolloff=5
 set winheight=5
 set winminheight=5
 
-" neovim specifics
-if has('nvim')
-    " link neovim to the correct python version
-    let g:python3_host_prog = expand('/usr/bin/python')
-    " Incremental Find & Replace
-    set inccommand=split
-    set undodir=~/.vim/nvim-undo/
-endif
-
 " Automatically install vim-plug if it's not installed
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -187,20 +178,6 @@ Plug 'sjl/gundo.vim'
 " Advanced Substitution and Abbreviation
 Plug 'tpope/vim-abolish'
 
-" Snippets
-if has("python3")
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
-endif
-
-" Linting
-Plug 'dense-analysis/ale'
-
-" Autocompletion
-if has("python3")
-    Plug 'Valloric/YouCompleteMe'
-endif
-
 " Motions
 Plug 'justinmk/vim-sneak'
 
@@ -258,10 +235,6 @@ let g:vimtex_compiler_latexmk = {
     \ ],
     \ 'continuous': 0
     \}
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 let g:vimtex_grammar_textidote = {
     \ 'jar': '~/software/textidote/textidote.jar',
     \ 'args': '--read-all --firstlang de --replace replacements.txt --remove-macros TODO,captionsetup',
@@ -270,19 +243,6 @@ map <localleader>lt  :compiler textidote\|make<CR>
 
 " ranger
 let g:ranger_replace_netrw = 1 " open ranger when opening a directory
-
-" YouCompleteMe Settings
-set rtp+=~/.vim/bundle/YouCompleteMe
-let g:ycm_server_python_interpreter="/usr/bin/python3"
-let g:ycm_autoclose_preview_window_after_insertion=1
-map <leader>d  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-map <leader>D  :YcmCompleter GetDoc<CR>
-map <C-Q>  :pc<CR>
-
-" ultisnips settings
-let g:UltiSnipsExpandTrigger="<C-s>"
-let g:UltiSnipsJumpForwardTrigger="<C-f>"
-let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 
 " Gundo
 nnoremap <leader>u :GundoToggle<CR>
@@ -311,7 +271,7 @@ let g:airline_inactive_collapse = 0
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = 'שׂ'
+let g:airline_symbols.branch = ''
 let g:airline_symbols.colnr = ''
 let g:airline_symbols.linenr = ' '
 let g:airline_symbols.maxlinenr = ' '
@@ -327,7 +287,7 @@ let g:netrw_fastbrowse = 0
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
 " rerun last command
-nmap tt :call Send_keys_to_Tmux("C-[ C-p Enter")<CR>
+nmap tt :call Send_keys_to_Tmux("Esc C-p Enter")<CR>
 " send keyboard-interrupt
 nnoremap tc :call Send_keys_to_Tmux("C-c")<CR>
 vmap ts <Plug>SendSelectionToTmux
@@ -409,13 +369,6 @@ omap ic <Plug>(GitGutterTextObjectInnerPending)
 omap ac <Plug>(GitGutterTextObjectOuterPending)
 xmap ic <Plug>(GitGutterTextObjectInnerVisual)
 xmap ac <Plug>(GitGutterTextObjectOuterVisual)
-
-" Linting Settings
-let g:ale_linters = {'python': ['flake8']}
-let g:ale_fixers = {'*': ['trim_whitespace'], 'python': ['autopep8']}
-noremap <leader>e   :ALENext<CR>
-noremap <leader>E   :ALEPrevious<CR>
-noremap <leader>F   :ALEFix<CR>
 
 " set ack.vim to use ag by default if it is available
 if executable('ag')
