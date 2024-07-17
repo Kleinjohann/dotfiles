@@ -94,10 +94,11 @@
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        "on-click": "~/.config/waybar/scripts/resource_notification.sh --cpu"
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "on-click": "~/.config/waybar/scripts/resource_notification.sh --mem"
     },
     "temperature": {
         // "thermal-zone": 2,
