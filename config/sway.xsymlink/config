@@ -48,7 +48,8 @@ assign [title="(?i)^zoom"] → 11
 ###############
 #  Autostart  #
 ###############
-exec xrdb -load ~/.Xresources
+exec_always swaymsg "exec flashfocus"
+exec swaymsg "exec ~/.config/sway/scripts/idle.sh"
 exec swaymsg "exec waybar"
 exec swaymsg "exec dunst -config ~/.config/dunst/dunstrc"
 exec swaymsg "exec dropbox start"
@@ -69,8 +70,14 @@ input "type:touchpad" {
     pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
 }
 
+# compose key
+input * xkb_options compose:ralt
+
 # power menu on mod+shift+e
 bindsym Mod4+shift+e exec ~/.config/sway/scripts/powermenu.sh
+
+# flash active window
+bindsym $mod+n exec --no-startup-id flash_window
 
 #####################
 #  Multimedia Keys  #
