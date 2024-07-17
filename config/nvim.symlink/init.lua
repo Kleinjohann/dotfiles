@@ -9,6 +9,7 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 vim.cmd("source ~/.vimrc")
 
 -- fix mismatched background for diagnostics signs
+vim.o.termguicolors = false
 vim.api.nvim_set_hl(0, "DiagnosticSignError", { ctermbg = 18, ctermfg = 1 })
 vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { ctermbg = 18, ctermfg = 3 })
 vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { ctermbg = 18, ctermfg = 14 })
