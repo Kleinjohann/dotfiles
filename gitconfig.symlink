@@ -14,10 +14,11 @@
     prune = true
 [rebase]
     autosquash = true
+    autostash = true
 [include]
     path = ~/.gitconfig.local
 [pull]
-    rebase = false
+    rebase = true
 [push]
     autoSetupRemote = true
 [rerere]
