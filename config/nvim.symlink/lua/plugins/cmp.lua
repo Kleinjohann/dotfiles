@@ -3,19 +3,10 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = {
             {
+                "copilot.lua",
                 "hrsh7th/nvim-cmp",
-                dependencies = {
-                    "hrsh7th/cmp-nvim-lsp",
-                    "hrsh7th/cmp-buffer",
-                    "zbirenbaum/copilot-cmp",
-                    "copilot.lua",
-                },
-                opts = {fix_pairs = true},
-                config = function(_, opts)
-                    local copilot_cmp = require("copilot_cmp")
-                    copilot_cmp.setup(opts)
-                    copilot_cmp._on_insert_enter({})
-                end,
+                "hrsh7th/cmp-nvim-lsp",
+                "hrsh7th/cmp-buffer",
             },
         },
         event = { "BufReadPre", "BufNewFile" },
@@ -40,18 +31,15 @@ return {
                     ["<C-d>"] = cmp.mapping.scroll_docs(4),
                     ["<C-f>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                     ["<C-s>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                 }),
                 sources = cmp.config.sources({
-                    { name = "copilot" },
+                    { name = "nvim_lsp", group_index = 2 },
                 }, {
-                    { name = "nvim_lsp" },
-                }, {
-                    { name = "buffer" },
+                    { name = "buffer", group_index = 2 },
                 }),
                 experimental = {
-                    ghost_text = true,
+                    ghost_text = false,
                 },
             })
 
@@ -211,7 +199,20 @@ return {
         cmd = "Copilot",
         build = ":Copilot auth",
         opts = {
-            suggestion = { enabled = false },
+            suggestion = {
+                enabled = true,
+                auto_trigger = true,
+                hide_during_completion = false,
+                debounce = 75,
+                keymap = {
+                    accept = "<C-e>",
+                    accept_word = false,
+                    accept_line = false,
+                    next = "<C-b>",
+                    prev = "<C-z>",
+                    dismiss = "<C-]>",
+                },
+            },
             panel = { enabled = false },
             filetypes = {
                 markdown = true,
