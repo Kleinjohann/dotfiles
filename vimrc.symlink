@@ -254,6 +254,7 @@ set rtp+=~/.fzf
 let g:fzf_action = {'ctrl-h': 'split', 'ctrl-v': 'vsplit'}
 nnoremap <C-F> :Files<CR>
 nnoremap <C-B> :Buffers<CR>
+nnoremap <C-H> :Helptags<CR>
 
 " automatically match the theme to the one set by base16-shell
 if filereadable(expand("~/.vimrc_background"))
