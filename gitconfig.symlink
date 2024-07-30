@@ -23,3 +23,5 @@
     autoSetupRemote = true
 [rerere]
     enabled = true
+[init]
+    defaultBranch = main
