@@ -49,10 +49,10 @@ assign [title="(?i)^zoom"] → 11
 #  Autostart  #
 ###############
 exec_always swaymsg "exec flashfocus"
+exec swaymsg "exec kanshi"
 exec swaymsg "exec ~/.config/sway/scripts/idle.sh"
 exec swaymsg "exec waybar"
 exec swaymsg "exec dunst -config ~/.config/dunst/dunstrc"
-exec swaymsg "exec dropbox start"
 exec swaymsg "exec GDK_DPI_SCALE=1.5 QT_SCALE_FACTOR=1.5 XCURSOR_SIZE=32 keepassxc"
 exec swaymsg "exec vivaldi-scaled"
 exec swaymsg "exec XCURSOR_SIZE=32 contour profile scratchpad"
