@@ -9,7 +9,6 @@ return {
                 "hrsh7th/cmp-buffer",
             },
         },
-        event = { "BufReadPre", "BufNewFile" },
 
         config = function()
             -- Set up nvim-cmp.
@@ -91,12 +90,9 @@ return {
                 vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.run, opts)
                 vim.keymap.set("v", "<leader>cc", vim.lsp.codelens.run, opts)
                 vim.keymap.set("n", "<leader>cC", vim.lsp.codelens.refresh, opts)
-                vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
             end
 
-            local servers = { "pyright", "ltex" }
+            local servers = { "pyright", "ltex", "clangd", "tailwindcss", "gopls" }
             for _, lsp in pairs(servers) do
                 lspconfig[lsp].setup({
                     on_attach = on_attach,
@@ -248,6 +244,7 @@ return {
                     lua = { "stylua" },
                     -- Conform will run multiple formatters sequentially
                     python = { "isort", "black" },
+                    snakemake = { "snakefmt" },
                     ["_"] = { "trim_whitespace" },
                 },
             })
