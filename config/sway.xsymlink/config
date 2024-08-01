@@ -70,8 +70,17 @@ input "type:touchpad" {
     pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
 }
 
-# compose key
-input * xkb_options compose:ralt
+# compose key with regular US layout for internal keyboard
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout us
+    xkb_options compose:ralt
+}
+
+# US international with sticky keys for corne (keys unsticked in corne firmware)
+input "18003:1:foostan_Corne" {
+    xkb_layout us
+    xkb_variant intl
+}
 
 # power menu on mod+shift+e
 bindsym Mod4+shift+e exec ~/.config/sway/scripts/powermenu.sh
