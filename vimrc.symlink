@@ -176,7 +176,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 " Undo
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 
 " Advanced Substitution and Abbreviation
 Plug 'tpope/vim-abolish'
@@ -248,7 +248,7 @@ map <localleader>lt  :compiler textidote\|make<CR>
 let g:ranger_replace_netrw = 1 " open ranger when opening a directory
 
 " Gundo
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " add fzf to path
 set rtp+=~/.fzf
