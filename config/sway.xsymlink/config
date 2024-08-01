@@ -115,7 +115,7 @@ bindsym Print exec slurp | grim -g - - | wl-copy
 bindsym Shift+Print exec grim ~/Pictures/screenshot-$(date +'%Y-%m-%d-%H%M%S.png')
 
 # toggle opacity for the current workspace
-bindsym $mod+o exec xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null | xargs -n 1 transset 2 -tx 2 -i
+bindsym $mod+Ctrl+o exec xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null | xargs -n 1 transset 2 -tx 2 -i
 
 # reset opacity for the current workspace
 bindsym $mod+Shift+o exec xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null | xargs -n 1 transset 1 -i
@@ -127,7 +127,7 @@ floating_modifier $mod
 bindsym $mod+Return exec XCURSOR_SIZE=32 contour profile main
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Ctrl+q kill
 
 # lock the screen
 bindsym $mod+Ctrl+l exec ~/.config/sway/scripts/lock_screen.sh
@@ -172,8 +172,8 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Ctrl+w layout tabbed
+bindsym $mod+Ctrl+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -199,6 +199,18 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 bindsym $mod+grave workspace 11
+
+# switch to workspace (for corne mini keyboard)
+bindsym $mod+q workspace 1
+bindsym $mod+w workspace 2
+bindsym $mod+e workspace 3
+bindsym $mod+r workspace 4
+bindsym $mod+t workspace 5
+bindsym $mod+y workspace 6
+bindsym $mod+u workspace 7
+bindsym $mod+i workspace 8
+bindsym $mod+o workspace 9
+bindsym $mod+p workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -242,7 +254,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+Ctrl+r mode "resize"
 
 # make pop-ups floating
 for_window [window_role="pop-up"]        floating enable
