@@ -82,8 +82,8 @@ input "18003:1:foostan_Corne" {
     xkb_variant intl
 }
 
-# power menu on mod+shift+e
-bindsym Mod4+shift+e exec ~/.config/sway/scripts/powermenu.sh
+# power menu on mod+Ctrl+e
+bindsym Mod4+Ctrl+e exec ~/.config/sway/scripts/powermenu.sh
 
 # flash active window
 bindsym $mod+n exec --no-startup-id flash_window
@@ -113,12 +113,6 @@ bindsym $mod+Shift+period move workspace to output down
 # Screenshots
 bindsym Print exec slurp | grim -g - - | wl-copy
 bindsym Shift+Print exec grim ~/Pictures/screenshot-$(date +'%Y-%m-%d-%H%M%S.png')
-
-# toggle opacity for the current workspace
-bindsym $mod+Ctrl+o exec xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null | xargs -n 1 transset 2 -tx 2 -i
-
-# reset opacity for the current workspace
-bindsym $mod+Shift+o exec xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null | xargs -n 1 transset 1 -i
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -171,9 +165,9 @@ bindsym $mod+minus split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+Ctrl+w layout tabbed
-bindsym $mod+Ctrl+e layout toggle split
+bindsym $mod+Ctrl+s layout stacking
+bindsym $mod+Ctrl+t layout tabbed
+bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -200,7 +194,7 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 bindsym $mod+grave workspace 11
 
-# switch to workspace (for corne mini keyboard)
+# switch to workspace (for keyboard without number row)
 bindsym $mod+q workspace 1
 bindsym $mod+w workspace 2
 bindsym $mod+e workspace 3
@@ -225,10 +219,20 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+grave move container to workspace 11
 
+# move focused container to workspace (for keyboard without number row)
+bindsym $mod+Shift+q move container to workspace 1
+bindsym $mod+Shift+w move container to workspace 2
+bindsym $mod+Shift+e move container to workspace 3
+bindsym $mod+Shift+r move container to workspace 4
+bindsym $mod+Shift+t move container to workspace 5
+bindsym $mod+Shift+y move container to workspace 6
+bindsym $mod+Shift+u move container to workspace 7
+bindsym $mod+Shift+i move container to workspace 8
+bindsym $mod+Shift+o move container to workspace 9
+bindsym $mod+Shift+p move container to workspace 10
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart inplace (preserves your layout/session, can be used to upgrade)
-bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
