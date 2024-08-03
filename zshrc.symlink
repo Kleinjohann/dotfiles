@@ -39,6 +39,9 @@ unsetopt beep
 # vim bindings
 bindkey -v
 
+# disable ctrl+s
+stty stop ''; stty start '';
+
 # copied over from bashrc for now
 export TERM='xterm-256color'
 export HOSTNAME=$(hostname)
