@@ -3,7 +3,7 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = {
             {
-                "copilot.lua",
+                "github/copilot.vim",
                 "hrsh7th/nvim-cmp",
                 "hrsh7th/cmp-nvim-lsp",
                 "hrsh7th/cmp-buffer",
@@ -191,30 +191,15 @@ return {
         end,
     },
     {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        build = ":Copilot auth",
-        opts = {
-            suggestion = {
-                enabled = true,
-                auto_trigger = true,
-                hide_during_completion = false,
-                debounce = 75,
-                keymap = {
-                    accept = "<C-e>",
-                    accept_word = false,
-                    accept_line = false,
-                    next = "<C-b>",
-                    prev = "<C-z>",
-                    dismiss = "<C-]>",
-                },
-            },
-            panel = { enabled = false },
-            filetypes = {
-                markdown = true,
-                help = true,
-            },
-        },
+        "github/copilot.vim",
+        build = ":Copilot setup",
+        config = function()
+            vim.keymap.set('i', '<C-E>', 'copilot#Accept("")', {
+                expr = true,
+                replace_keycodes = false
+            })
+            vim.g.copilot_no_tab_map = true
+        end
     },
     {
         "stevearc/conform.nvim",
