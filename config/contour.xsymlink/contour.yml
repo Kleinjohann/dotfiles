@@ -165,7 +165,7 @@ profiles:
 
         # When this profile is *activated*, this flag decides
         # whether or not the title bar will be shown
-        show_title_bar: true
+        show_title_bar: false
         # When this profile is being *activated*, this flag decides
         # whether or not to put the terminal's screen into fullscreen mode.
         #
@@ -436,7 +436,7 @@ profiles:
 
         # When this profile is *activated*, this flag decides
         # whether or not the title bar will be shown
-        show_title_bar: true
+        show_title_bar: false
         # When this profile is being *activated*, this flag decides
         # whether or not to put the terminal's screen into fullscreen mode.
         #
