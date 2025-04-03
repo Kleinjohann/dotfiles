@@ -92,13 +92,46 @@ return {
                 vim.keymap.set("n", "<leader>cC", vim.lsp.codelens.refresh, opts)
             end
 
-            local servers = { "pyright", "ltex", "clangd", "tailwindcss", "gopls" }
+            local servers = { "ruff", "ltex", "clangd", "tailwindcss", "gopls" }
             for _, lsp in pairs(servers) do
                 lspconfig[lsp].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
                 })
             end
+
+            -- separate out pyright to disable everything ruff handles
+            require("lspconfig").pyright.setup({
+                on_attach = on_attach,
+                settings = {
+                    pyright = {
+                        -- Using Ruff's import organizer
+                        disableOrganizeImports = true,
+                    },
+                    python = {
+                        analysis = {
+                            -- Ignore all files for analysis to exclusively use Ruff for linting
+                            ignore = { "*" },
+                        },
+                    },
+                },
+            })
+
+            -- disable ruff hover in favor of pyright
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+                callback = function(args)
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    if client == nil then
+                        return
+                    end
+                    if client.name == "ruff" then
+                        -- Disable hover in favor of Pyright
+                        client.server_capabilities.hoverProvider = false
+                    end
+                end,
+                desc = "LSP: Disable hover capability from Ruff",
+            })
 
             -- make lua-ls aware of plugins
             lspconfig["lua_ls"].setup({
@@ -194,12 +227,12 @@ return {
         "github/copilot.vim",
         build = ":Copilot setup",
         config = function()
-            vim.keymap.set('i', '<C-E>', 'copilot#Accept("")', {
+            vim.keymap.set("i", "<C-E>", 'copilot#Accept("")', {
                 expr = true,
-                replace_keycodes = false
+                replace_keycodes = false,
             })
             vim.g.copilot_no_tab_map = true
-        end
+        end,
     },
     {
         "stevearc/conform.nvim",
@@ -228,7 +261,7 @@ return {
                     graphql = { "prettier" },
                     lua = { "stylua" },
                     -- Conform will run multiple formatters sequentially
-                    python = { "isort", "black" },
+                    python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
                     snakemake = { "snakefmt" },
                     ["_"] = { "trim_whitespace" },
                 },
