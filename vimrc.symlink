@@ -22,7 +22,7 @@ set timeoutlen=1000
 set ttimeoutlen=0
 
 " update stuff more quickly (default 4000)
-set updatetime=1000
+set updatetime=300
 
 " make splits mouse selectable
 if has('mouse')

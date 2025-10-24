@@ -146,9 +146,11 @@ tm() {
 # stay in current session if already in a tmux session
 # (check if getting the version returns an error first to make sure tmux can be started)
 if tmux -V > /dev/null 2>&1 &&  ! [[ -n "$TMUX" ]]; then
+    echo "Initializing tmux..."
     scratchpad_session_name=scratchpad
     terminal_session_name=${HOSTNAME/./·}
     if [[ -n $scratchpad ]]; then
+        echo "Initializing scratchpad..."
         [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
         tmux $change -t "$scratchpad_session_name" 2>/dev/null || (tmux new-session -d -s "$scratchpad_session_name" && tmux $change -t "$scratchpad_session_name")
     else
@@ -257,3 +259,10 @@ zvm_after_init() {
       'unset' '__fzf_key_bindings_options'
     }
 }
+
+# Created by `pipx` on 2024-07-15 20:31:35
+export PATH="$PATH:/home/alex/.local/bin"
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/.luarocks/bin
+export PATH=$PATH:/root/.local/bin
+

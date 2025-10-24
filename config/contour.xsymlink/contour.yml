@@ -270,7 +270,7 @@ profiles:
             # - fontconfig      : uses fontconfig to select fonts
             # - CoreText        : uses OS/X CoreText to select fonts.
             # - DirectWrite     : selects DirectWrite engine (Windows only)
-            locator: fontconfig
+            locator: native
 
             # Text shaping related settings
             text_shaping:
@@ -406,6 +406,8 @@ profiles:
         hyperlink_decoration:
             normal: dotted
             hover: underline
+
+
     scratchpad:
         # You can override the process to be started inside the terminal.
         # If nothing is specified, the users' default login shell will be used.
@@ -541,7 +543,7 @@ profiles:
             # - fontconfig      : uses fontconfig to select fonts
             # - CoreText        : uses OS/X CoreText to select fonts.
             # - DirectWrite     : selects DirectWrite engine (Windows only)
-            locator: fontconfig
+            locator: native
 
             # Text shaping related settings
             text_shaping:
@@ -602,8 +604,8 @@ profiles:
             # If bold/italic/bold_italic are not explicitly specified, the regular font with
             # the respective weight and slant will be used.
             # bold: "FiraCode Bold Nerd Font"
-            italic: "FantasqueSansMono Nerd Font"
-            bold_italic: "FantasqueSansMono Nerd Font"
+            italic: "FantasqueSansM Nerd Font"
+            bold_italic: "FantasqueSansM Nerd Font"
 
             # This is a special font to be used for displaying unicode symbols
             # that are to be rendered in emoji presentation.

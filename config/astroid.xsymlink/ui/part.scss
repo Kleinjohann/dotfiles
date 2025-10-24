@@ -1,20 +1,9 @@
 /* ui-version: 5 (do not change when modifying theme for yourself) */
 /* Fonts */
-@if not(global-variable-exists(font-base-size)) {
-  $font-base-size: 16px !global;
-}
-
-@if not(global-variable-exists(font-mono)) {
-  $font-mono: monospace !global;
-}
-
-@if not(global-variable-exists(font-sans)) {
-  $font-sans: sans-serif !global;
-}
-
-@if not(global-variable-exists(font-family-default)) {
-  $font-family-default: $font-sans !global;
-}
+$font-base-size: 15px !global;
+$font-mono: "FiraCode Nerd Font" !global;
+$font-sans: sans-serif !global;
+$font-family-default: $font-mono !global;
 
 a {
     color: #ffaf00;

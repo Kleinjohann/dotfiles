@@ -38,7 +38,7 @@ assign [app_id="^Zotero$"] → 2
 assign [app_id="(?i)^lyx"] → 3
 assign [app_id="contour"] → 4
 for_window [app_id="contour" title="scratchpad"] move scratchpad
-for_window [app_id="contour" title="scratchpad"] resize set 1600 900
+for_window [app_id="contour" title="scratchpad"] resize set 1000 600
 assign [app_id="(?i)^astroid"] → 5
 assign [app_id="org.keepassxc.KeePassXC"] → 9
 assign [app_id="(?i)^zoom"] → 11
@@ -49,16 +49,15 @@ assign [title="(?i)^zoom"] → 11
 #  Autostart  #
 ###############
 exec_always swaymsg "exec flashfocus"
-exec swaymsg "exec kanshi"
+exec_always swaymsg "exec kanshi"
 exec swaymsg "exec ~/.config/sway/scripts/idle.sh"
 exec swaymsg "exec waybar"
 exec swaymsg "exec dunst -config ~/.config/dunst/dunstrc"
 exec swaymsg "exec GDK_DPI_SCALE=1.5 QT_SCALE_FACTOR=1.5 XCURSOR_SIZE=32 keepassxc"
 exec swaymsg "exec vivaldi-scaled"
-exec swaymsg "exec XCURSOR_SIZE=32 contour profile scratchpad"
+exec swaymsg "exec XCURSOR_SIZE=32 scratchpad=TRUE contour profile scratchpad"
 exec swaymsg "exec XCURSOR_SIZE=32 contour profile main"
 exec swaymsg "exec astroid"
-exec swaymsg "exec ~/.config/sway/scripts/denoise_mic.sh"
 
 # Touchpad Config
 input "type:touchpad" {
@@ -68,6 +67,13 @@ input "type:touchpad" {
     dwt enabled
     accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
     pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
+}
+
+# Touchpad Config
+input "1241:64530:USB_Laser_Game_Mouse" {
+    scroll_factor 0.25
+    accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+    pointer_accel 0.0 # set mouse sensitivity (between -1 and 1)
 }
 
 # compose key with regular US layout for internal keyboard
@@ -112,6 +118,7 @@ bindsym $mod+Shift+period move workspace to output down
 
 # Screenshots
 bindsym Print exec slurp | grim -g - - | wl-copy
+bindsym Ctrl+Print exec slurp | grim -g - ~/Pictures/screenshot-$(date +'%Y-%m-%d-%H%M%S.png')
 bindsym Shift+Print exec grim ~/Pictures/screenshot-$(date +'%Y-%m-%d-%H%M%S.png')
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -165,8 +172,8 @@ bindsym $mod+minus split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Ctrl+s layout stacking
-bindsym $mod+Ctrl+t layout tabbed
+bindsym $mod+Ctrl+s layout toggle stacking
+bindsym $mod+Ctrl+t layout toggle tabbed
 bindsym $mod+s layout toggle split
 
 # toggle tiling / floating

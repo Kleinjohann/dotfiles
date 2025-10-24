@@ -30,11 +30,11 @@
 
 /* Fonts */
 @if not(global-variable-exists(font-base-size)) {
-  $font-base-size: 16px !global;
+  $font-base-size: 15px !global;
 }
 
 @if not(global-variable-exists(font-mono)) {
-  $font-mono: monospace !global;
+  $font-mono: "FiraCode Nerd Font" !global;
 }
 
 @if not(global-variable-exists(font-sans)) {
@@ -42,7 +42,7 @@
 }
 
 @if not(global-variable-exists(font-family-default)) {
-  $font-family-default: $font-sans !global;
+  $font-family-default: $font-mono !global;
 }
 
 /* Colours */
@@ -80,7 +80,7 @@
         background-color: #262626 !important;
     }
     body, .email {
-        font-size: 11px !important;
+        font-size: 15px !important;
     }
     .avatar, .button, .starred {
         display: none !important;
