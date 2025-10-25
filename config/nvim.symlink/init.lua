@@ -6,6 +6,13 @@ vim.opt.undodir = "~/.vim/nvim-undo/"
 
 vim.g.python3_host_prog = "/usr/bin/python3"
 
+-- remove lsp default mappings that conflict with my replace mappings
+vim.keymap.del('n', 'grt')
+vim.keymap.del('n', 'gri')
+vim.keymap.del('n', 'gra')
+vim.keymap.del('n', 'grn')
+vim.keymap.del('x', 'gra')
+
 vim.cmd("source ~/.vimrc")
 
 -- LSP activation (references lsp/<filename>
@@ -69,7 +76,7 @@ vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 vim.keymap.set("n", "gR", vim.lsp.buf.references, opts)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
-vim.keymap.set('n', 'K', function() vim.lsp.buf.hover { border = 'rounded' } end)
+vim.keymap.set('n', 'K', function() vim.lsp.buf.hover { border = _border } end)
 vim.keymap.set("n", "gK", function() vim.lsp.buf.signature_help { border = _border, focusable = false, close_events = { "CursorMoved", "BufHidden", "InsertCharPre" }, } end, opts)
 vim.keymap.set("i", "<c-k>", function() vim.lsp.buf.signature_help { border = _border, focusable = false, close_events = { "CursorMoved", "BufHidden", "InsertCharPre" }, } end, opts)
 vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
