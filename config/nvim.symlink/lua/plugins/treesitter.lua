@@ -9,9 +9,12 @@ return {
       highlight = {
           enable = true,
           disable = function(lang, bufnr) -- Disable in large buffers
-              return vim.api.nvim_buf_line_count(bufnr) > 50000
-          end,},
-      folds = { enable = true },
+                        if lang == "latex" then
+                            return true
+                        end
+                        return vim.api.nvim_buf_line_count(bufnr) > 50000
+                    end,},
+              folds = { enable = true },
       ensure_installed = {
         "bash",
         "c",
@@ -24,6 +27,7 @@ return {
         "jsdoc",
         "json",
         "jsonc",
+        "latex",
         "lua",
         "luadoc",
         "luap",
