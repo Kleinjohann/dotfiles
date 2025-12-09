@@ -1,3 +1,10 @@
+# neovim lazy-lock
+config/nvim.xsymlink/lazy-lock.json
+
+# wallpapers
+wallpapers/*
+!wallpapers/sm.tex
+
 # autorandr profiles
 config/autorandr.xsymlink/*/
 
