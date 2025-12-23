@@ -75,6 +75,7 @@ return {
                     },
                 },
                 formatters_by_ft = {
+                    go = { "gofmt" },
                     javascript = { "prettier" },
                     typescript = { "prettier" },
                     javascriptreact = { "prettier" },
