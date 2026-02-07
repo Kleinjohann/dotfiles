@@ -1,3 +1,5 @@
+# vi: ft=cfg
+
 # searching in main window
 main_window.search_tag=?
 main_window.search=/
