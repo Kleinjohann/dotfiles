@@ -62,7 +62,7 @@ else
 fi
 
 # use vimpager
-export PAGER=~/.vim/bundle/vimpager/vimpager
+export PAGER=nvimpager
 alias less=$PAGER
 alias zless=$PAGER
 
