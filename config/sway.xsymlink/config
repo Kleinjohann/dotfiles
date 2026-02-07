@@ -33,7 +33,7 @@ exec_always {
 ###########################
 #  Workspace Assignments  #
 ###########################
-assign [class="^Vivaldi-stable$"] → 1
+assign [app_id="^vivaldi-stable$"] → 1
 assign [app_id="^Zotero$"] → 2
 assign [app_id="(?i)^lyx"] → 3
 assign [app_id="contour"] → 4
