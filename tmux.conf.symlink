@@ -84,6 +84,9 @@ bind-key ` last-window
 # reload conf
 bind-key r source-file ~/.tmux.conf
 
+# reload conf
+bind-key R refresh
+
 # new session prompt key
 bind-key e command-prompt -p "Create new session:" "new-session -s %1"
 
@@ -155,6 +158,9 @@ set -g status-justify "left"
 set -g status "on"
 set -g status-left-style "none"
 set -g status-right-style "none"
+set -g window-status-style "none"
+set -g window-status-last-style "none"
+set -g window-status-current-style "none"
 set -g status-style "fg=$c_dark_grey,bg=$c_dark_grey,none"
 set -g status-right-length "100"
 set -g status-left-length "100"
