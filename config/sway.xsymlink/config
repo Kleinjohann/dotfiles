@@ -52,19 +52,21 @@ assign [title="(?i)^zoom"] → 11
 ###############
 exec_always swaymsg "exec flashfocus"
 exec_always swaymsg "exec kanshi"
+exec_always swaymsg "exec wl-paste --watch cliphist store"
 exec swaymsg "exec ~/.config/sway/scripts/idle.sh"
 exec swaymsg "exec waybar"
 exec swaymsg "exec dunst -config ~/.config/dunst/dunstrc"
 exec swaymsg "exec GDK_DPI_SCALE=1.5 QT_SCALE_FACTOR=1.5 XCURSOR_SIZE=32 keepassxc"
 exec swaymsg "exec vivaldi-scaled"
-exec swaymsg "exec XCURSOR_SIZE=32 scratchpad=TRUE contour profile scratchpad"
-exec swaymsg "exec XCURSOR_SIZE=32 contour profile main"
+exec swaymsg "exec XCURSOR_SIZE=32 scratchpad=TRUE contour profile scratchpad > ~/scratch/contour_scratchpad.log 2>&1"
+exec swaymsg "exec XCURSOR_SIZE=32 contour profile main > ~/scratch/contour_main.log 2>&1"
 exec swaymsg "exec astroid"
 
 # Touchpad Config
 input "type:touchpad" {
     tap enabled
     natural_scroll enabled
+    drag_lock enabled
     scroll_factor 0.25
     dwt enabled
     accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
@@ -127,7 +129,7 @@ bindsym Shift+Print exec grim ~/Pictures/screenshot-$(date +'%Y-%m-%d-%H%M%S.png
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec XCURSOR_SIZE=32 contour profile main
+bindsym $mod+Return exec XCURSOR_SIZE=32 contour profile main > ~/scratch/contour_manual.log 2>&1
 
 # kill focused window
 bindsym $mod+Ctrl+q kill
@@ -139,6 +141,7 @@ bindsym $mod+Ctrl+l exec ~/.config/sway/scripts/lock_screen.sh
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+Tab exec rofi -show window
 bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | wl-copy --trim-newline"
+bindsym $mod+Ctrl+c exec rofi -modi clipboard:~/.config/sway/scripts/cliphist-rofi.sh -show clipboard
 
 # change focus
 bindsym $mod+h focus left

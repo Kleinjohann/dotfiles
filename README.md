@@ -53,6 +53,7 @@ Run `create_symlinks.sh` to create symlinks to the configuration files in this r
     - [waybar](https://github.com/Alexays/Waybar)
     - [waylock](https://codeberg.org/ifreund/waylock)
     - [wl-clipboard](https://github.com/bugaevc/wl-clipboard)
+    - [cliphist](https://github.com/sentriz/cliphist)
     - [zathura](https://git.pwmt.org/pwmt/zathura)
         - change the view method for vimtex if you don't use this
 
