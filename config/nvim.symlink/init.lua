@@ -15,6 +15,9 @@ vim.keymap.del('x', 'gra')
 
 vim.cmd("source ~/.vimrc")
 
+vim.o.cmdheight = 0
+require("vim._core.ui2").enable()
+
 -- LSP activation (references lsp/<filename>
 vim.lsp.enable({
     "pyright",
@@ -23,7 +26,6 @@ vim.lsp.enable({
     "ruff",
     "ltex",
     "clangd",
-    "tailwindcss",
 })
 
 -- rounded borders for all floats

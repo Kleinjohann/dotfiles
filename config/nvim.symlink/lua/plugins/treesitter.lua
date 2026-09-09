@@ -1,10 +1,10 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = 'master',
+  branch = 'main',
   lazy = false,
   build = ":TSUpdate",
   config = function()
-      require'nvim-treesitter.configs'.setup {
+      require'nvim-treesitter.config'.setup {
       indent = { enable = true },
       highlight = {
           enable = true,
@@ -15,7 +15,9 @@ return {
                         return vim.api.nvim_buf_line_count(bufnr) > 50000
                     end,},
               folds = { enable = true },
-      ensure_installed = {
+  }
+
+  require('nvim-treesitter').install {
         "bash",
         "c",
         "diff",
@@ -44,8 +46,16 @@ return {
         "vimdoc",
         "xml",
         "yaml",
-      },
-      auto_install = true,
-  }
+    }
+
+  -- Explicitly tell the main branch to hook highlighting into buffers
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(args)
+        local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+        if lang then
+          pcall(vim.treesitter.start, args.buf, lang)
+        end
+      end,
+    })
   end
 }

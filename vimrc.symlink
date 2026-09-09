@@ -242,7 +242,7 @@ let g:vimtex_grammar_textidote = {
     \ 'jar': '~/software/textidote/textidote.jar',
     \ 'args': '--read-all --firstlang de --replace replacements.txt --remove-macros TODO,captionsetup',
     \}
-map <localleader>lt  :compiler textidote\|make<CR>
+map <localleader>x  :compiler textidote\|make<CR>
 
 " ranger
 let g:ranger_replace_netrw = 1 " open ranger when opening a directory
